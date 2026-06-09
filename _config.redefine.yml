@@ -1,0 +1,331 @@
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# THEME REDEFINE CONFIGURATION
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# BASIC INFORMATION
+info:
+  title: xiaobotester's Blog
+  subtitle: 技术博客 · 测试 · AI · 科技
+  author: xiaobotester
+  url: https://xiaobotester.github.io
+
+# IMAGE CONFIGURATION
+defaults:
+  favicon: /img/favicon.ico
+  logo:
+  avatar: https://avatars.githubusercontent.com/xiaobotester
+
+# COLORS
+colors:
+  primary: "#2563EB"
+  secondary:
+  default_mode: light
+
+# SITE CUSTOMIZATION
+global:
+  fonts:
+    chinese:
+      enable: false
+      family:
+      url:
+    english:
+      enable: false
+      family:
+      url:
+    title:
+      enable: false
+      family:
+      url:
+  content_max_width: 1000px
+  sidebar_width: 210px
+  hover:
+    shadow: true
+    scale: false
+  scroll_progress:
+    bar: true
+    percentage: true
+  website_counter:
+    url: https://cn.vercount.one/js
+    enable: true
+    site_pv: true
+    site_uv: true
+    post_pv: true
+  single_page: true
+  preloader:
+    enable: false
+    custom_message:
+  side_tools:
+    gear_rotation: true
+    auto_expand: false
+  open_graph:
+    enable: true
+    image:
+    description: xiaobotester 的技术博客，分享测试、AI与科技领域的见解
+  google_analytics:
+    enable: false
+    id:
+
+# FONTAWESOME
+fontawesome:
+  thin: false
+  light: false
+  duotone: false
+  sharp_solid: false
+
+# HOME BANNER
+home_banner:
+  enable: true
+  style: fixed
+  image:
+    light: /images/wallhaven-wqery6-light.webp
+    dark: /images/wallhaven-wqery6-dark.webp
+  title: xiaobotester's Blog
+  subtitle:
+    text:
+      - "探索技术前沿，分享测试心得"
+      - "AI · 科技 · 软件测试 · 行业洞察"
+    hitokoto:
+      enable: false
+      show_author: false
+      api: https://v1.hitokoto.cn
+    typing_speed: 100
+    backing_speed: 80
+    starting_delay: 500
+    backing_delay: 1500
+    loop: true
+    smart_backspace: true
+  text_color:
+    light: "#fff"
+    dark: "#d1d1b6"
+  text_style:
+    title_size: 2.8rem
+    subtitle_size: 1.5rem
+    line_height: 1.2
+  custom_font:
+    enable: false
+    family:
+    url:
+  social_links:
+    enable: true
+    style: default
+    links:
+      - icon: github
+        url: https://github.com/xiaobotester
+      - icon: email
+        url: your-email@example.com
+    qrs: []
+
+# NAVIGATION BAR
+navbar:
+  auto_hide: false
+  color:
+    left: "#2563EB"
+    right: "#7C3AED"
+    transparency: 35
+  width:
+    home: 1200px
+    pages: 1000px
+  links:
+    Home:
+      path: /
+      icon: fa-regular fa-house
+    Archives:
+      path: /archives
+      icon: fa-regular fa-archive
+    Categories:
+      path: /categories
+      icon: fa-regular fa-folder
+    Tags:
+      path: /tags
+      icon: fa-regular fa-tags
+    About:
+      path: /about
+      icon: fa-regular fa-user
+  search:
+    enable: true
+    preload: true
+
+# HOME PAGE ARTICLE SETTINGS
+home:
+  sidebar:
+    enable: true
+    position: left
+    first_item: menu
+    announcement: "欢迎访问我的博客！这里分享 AI、科技与测试领域的最新资讯和技术文章。"
+    show_on_mobile: true
+    links:
+      Archives:
+        path: /archives
+        icon: fa-regular fa-archive
+      Tags:
+        path: /tags
+        icon: fa-regular fa-tags
+      Categories:
+        path: /categories
+        icon: fa-regular fa-folder
+  article_date_format: auto
+  excerpt_length: 200
+  categories:
+    enable: true
+    limit: 3
+  tags:
+    enable: true
+    limit: 3
+
+# ARTICLE
+articles:
+  style:
+    font_size: 16px
+    line_height: 1.5
+    image_border_radius: 14px
+    image_alignment: center
+    image_caption: false
+    link_icon: true
+    delete_mask: false
+    title_alignment: left
+    headings_top_spacing:
+      h1: 3.2rem
+      h2: 2.4rem
+      h3: 1.9rem
+      h4: 1.6rem
+      h5: 1.4rem
+      h6: 1.3rem
+  word_count:
+    enable: false
+    count: true
+    min2read: true
+  author_label:
+    enable: true
+    auto: false
+    list: []
+  code_block:
+    copy: true
+    style: mac
+    highlight_theme:
+      light: github
+      dark: vs2015
+    font:
+      enable: false
+      family:
+      url:
+  toc:
+    enable: true
+    max_depth: 3
+    number: false
+    expand: true
+    init_open: true
+  copyright:
+    enable: true
+    default: cc_by_nc_sa
+  lazyload: true
+  pangu_js: false
+  recommendation:
+    enable: false
+    title: 推荐阅读
+    limit: 3
+    mobile_limit: 2
+    placeholder: /images/wallhaven-wqery6-light.webp
+    skip_dirs: []
+
+# COMMENT
+comment:
+  enable: false
+  system: waline
+  config:
+    waline:
+      serverUrl:
+      lang: zh-CN
+      emoji: []
+      recaptchaV3Key:
+      turnstileKey:
+      reaction: false
+    gitalk:
+      clientID:
+      clientSecret:
+      repo:
+      owner:
+      proxy:
+    twikoo:
+      version: 1.6.10
+      server_url:
+      region:
+    giscus:
+      repo:
+      repo_id:
+      category:
+      category_id:
+      mapping: pathname
+      strict: 0
+      reactions_enabled: 1
+      emit_metadata: 0
+      lang: en
+      input_position: bottom
+      loading: lazy
+    artalk:
+      server:
+      site:
+    utterances:
+      repo:
+      issue_term: pathname
+      issue_number:
+      label:
+      theme_light: github-light
+      theme_dark: github-dark
+
+# FOOTER
+footer:
+  runtime: true
+  icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
+  start: 2026/06/09 00:00:00
+  statistics: true
+  customize:
+  icp:
+    enable: false
+    number:
+    url:
+
+# INJECT
+inject:
+  enable: false
+  head:
+    -
+  footer:
+    -
+
+# PLUGINS
+plugins:
+  feed:
+    enable: false
+  aplayer:
+    enable: false
+    type: fixed
+    audios:
+      - name:
+        artist:
+        url:
+        cover:
+        lrc:
+  mermaid:
+    enable: false
+    version: "11.4.1"
+    theme:
+      light: "default"
+      dark: "dark"
+
+# PAGE TEMPLATES
+page_templates:
+  friends_column: 2
+  tags_style: blur
+  masonry:
+    batch_size: 12
+    initial_batch_size: 24
+
+# CDN
+cdn:
+  enable: false
+  provider: npmmirror
+  custom_url:
+
+# DEVELOPER MODE
+developer:
+  enable: false
