@@ -230,3 +230,9 @@ aside:
     post_count: true
     last_push_date: true
     sort_order:
+
+# Inject custom CSS
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/custom.css">
+  bottom:
