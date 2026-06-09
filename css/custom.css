@@ -2,8 +2,8 @@
 
 /* ========== 子页面顶部横幅高度 ========== */
 /* 分类、标签、归档、关于等子页面的横幅大幅缩小 */
-#page-header:not(.full_page):not(.post-bg) {
-  height: 10rem !important;
+#page-header.not-home-page {
+  height: 12rem !important;
   min-height: unset !important;
 }
 
