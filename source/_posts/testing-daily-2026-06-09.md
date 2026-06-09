@@ -79,4 +79,15 @@ AI测试工具在以下方向展现出显著优势：
 
 ---
 
+## 数据源与参考链接
+
+- [2026软件测试报告行业发展五大新趋势](https://mparticle.uc.cn/article.html?uc_param_str=frdnsnpfvecpntnwprdssskt#!wm_aid=5c0542ce03544a70a24f88060e8eb4cd!!wm_id=45a93bb3f6dc46c38636c1665227917f) — UC头条
+- [AI测试到底测什么？一文拆解AI辅助测试与AI产品全流程测试](http://www.51testing.com/?action-viewnews-itemid-7810170) — 51Testing软件测试网
+- [2026软件测试行业深度分析及发展前景预测](http://m.chinairn.com/hyzx/20260604/174937585.shtml) — 中研网
+- [2026转型AI测试前景怎么样？行业缺口、薪资与靠谱机构测评](https://m.toutiao.com/article/7647041013940240947/) — 今日头条
+- [mabl Agentic AI Software Testing Platform](https://www.mabl.com/) — mabl官网
+- [微软推出MXC SDK为AI智能体提供安全隔离](https://juejin.cn/post/7647495318548873254) — 稀土掘金
+
+---
+
 *以上就是2026年6月9日测试领域日报的全部内容。如果你觉得有价值，欢迎转发分享给同行朋友。*

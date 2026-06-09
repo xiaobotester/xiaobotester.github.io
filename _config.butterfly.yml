@@ -2,7 +2,7 @@
 nav:
   logo:
   display_title: true
-  fixed: false
+  fixed: true
 
 # Menu Settings
 menu:

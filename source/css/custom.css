@@ -1,0 +1,36 @@
+/* 自定义样式：缩小导航栏和页面头部高度 */
+
+/* 缩小子页面（非首页）的顶部横幅高度 */
+#page-header:not(.full_page) {
+  height: 18rem !important;
+}
+
+/* 缩小导航栏本身的高度 */
+#nav {
+  padding: 0.3rem 1.5rem !important;
+}
+
+#nav #site-info {
+  font-size: 1rem;
+}
+
+/* 缩小文章页顶部标题区域 */
+#page-header.post-bg #post-info {
+  padding: 0.5rem 1rem;
+}
+
+#page-header #post-info #post-title {
+  font-size: 1.5rem;
+}
+
+/* 缩小分类/标签/归档页的顶部区域 */
+#page-header #archive-container,
+#page-header #category-container,
+#page-header #tag-container {
+  height: 14rem !important;
+}
+
+/* 导航菜单项间距优化 */
+#nav #menus .menus_item .menus_item_child {
+  padding: 0.3rem 0;
+}

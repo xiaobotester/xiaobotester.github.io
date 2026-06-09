@@ -102,4 +102,16 @@ AI独角兽的资本化进程正在加速推进：
 
 ---
 
+## 数据源与参考链接
+
+- [AI科技日报 | 2026年6月5日：50条AI重磅新闻全景速览](https://juejin.cn/post/7647495318548873254) — 稀土掘金
+- [每日AI必读资讯：AI人工智能领域最新热点资讯汇总（2026年6月6日）](http://foxbot.kuryun.com/home/Blog/detail.html?id=3613) — FoxBot
+- [2026年6月｜国内外AI智能体新闻](https://m.toutiao.com/w/1867301918191616/) — 今日头条
+- [2026年6月2日AI人工智能最新资讯](https://baijiahao.baidu.com/s?id=1866930041052323040) — 百家号
+- [2026年6月5日人工智能早间新闻](https://blog.csdn.net/fudaihb/article/details/161706868) — CSDN博客
+- [新浪人工智能热点小时报](https://k.sina.cn/article_7857201856_1d45362c001906dv6a.html) — 新浪网
+- [AI与大模型新闻日报 | 2026-06-01](https://m.blog.csdn.net/dozenyaoyida/article/details/161581773) — CSDN
+
+---
+
 *以上就是2026年6月9日AI+科技领域日报的全部内容。如果你觉得有价值，欢迎转发分享给同行朋友。*
