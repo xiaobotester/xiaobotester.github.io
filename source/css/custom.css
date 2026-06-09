@@ -1,36 +1,56 @@
 /* 自定义样式：缩小导航栏和页面头部高度 */
 
-/* 缩小子页面（非首页）的顶部横幅高度 */
-#page-header:not(.full_page) {
-  height: 18rem !important;
+/* ========== 子页面顶部横幅高度 ========== */
+/* 分类、标签、归档、关于等子页面的横幅大幅缩小 */
+#page-header:not(.full_page):not(.post-bg) {
+  height: 10rem !important;
+  min-height: unset !important;
 }
 
-/* 缩小导航栏本身的高度 */
+/* 文章详情页顶部 */
+#page-header.post-bg {
+  height: 18rem !important;
+  min-height: unset !important;
+}
+
+/* ========== 导航栏本身 ========== */
 #nav {
-  padding: 0.3rem 1.5rem !important;
+  height: 2.8rem !important;
+  padding: 0 1.5rem !important;
 }
 
 #nav #site-info {
-  font-size: 1rem;
+  font-size: 0.95rem;
+  line-height: 2.8rem;
 }
 
-/* 缩小文章页顶部标题区域 */
+#nav #menus .menus_item > a,
+#nav #menus .menus_item > span {
+  font-size: 0.85rem;
+  line-height: 2.8rem;
+}
+
+/* ========== 子页面标题文字缩小 ========== */
+#page-header #site-title,
+#page-header #site-subtitle {
+  font-size: 1.2rem !important;
+}
+
+/* ========== 文章页顶部标题区域 ========== */
 #page-header.post-bg #post-info {
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 1rem;
 }
 
 #page-header #post-info #post-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  line-height: 1.4;
 }
 
-/* 缩小分类/标签/归档页的顶部区域 */
-#page-header #archive-container,
-#page-header #category-container,
-#page-header #tag-container {
-  height: 14rem !important;
+#page-header #post-info #post-meta {
+  font-size: 0.8rem;
 }
 
-/* 导航菜单项间距优化 */
+/* ========== 导航菜单下拉优化 ========== */
 #nav #menus .menus_item .menus_item_child {
-  padding: 0.3rem 0;
+  padding: 0.2rem 0;
 }
