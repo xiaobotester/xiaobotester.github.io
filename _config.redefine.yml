@@ -322,7 +322,7 @@ page_templates:
 
 # CDN
 cdn:
-  enable: false
+  enable: true
   provider: npmmirror
   custom_url:
 
