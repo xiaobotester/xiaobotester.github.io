@@ -7,7 +7,7 @@ echo      Deploy Blog to GitHub Pages
 echo  ============================================
 echo.
 
-cd /d "C:\Users\webull\.qoderworkcn\workspace\mq5za4b8etbanpdg\my-blog"
+cd /d "C:\Code\MyCode\my-blog"
 
 git diff --quiet HEAD 2>nul
 if %errorlevel% neq 0 (
