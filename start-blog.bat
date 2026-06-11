@@ -9,7 +9,7 @@ echo.
 echo  Starting Hexo server...
 echo.
 
-cd /d "C:\Users\webull\.qoderworkcn\workspace\mq5za4b8etbanpdg\my-blog"
+cd /d "C:\Code\MyCode\my-blog"
 
 if not exist "node_modules" (
     echo  [INFO] First run, installing dependencies...
