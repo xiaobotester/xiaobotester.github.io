@@ -9,10 +9,10 @@ echo.
 
 cd /d "C:\Code\MyCode\my-blog"
 
-git diff --quiet HEAD 2>nul
+git add -A
+git diff --cached --quiet 2>nul
 if %errorlevel% neq 0 (
     echo  [INFO] Changes detected, committing...
-    git add -A
     git commit -m "Update blog: %date% %time%"
     echo.
 ) else (
