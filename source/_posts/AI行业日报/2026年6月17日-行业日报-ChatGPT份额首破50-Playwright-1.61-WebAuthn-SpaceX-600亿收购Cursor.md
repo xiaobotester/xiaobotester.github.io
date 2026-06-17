@@ -1,6 +1,6 @@
----
+﻿---
 title: 2026年6月17日-行业日报-ChatGPT份额首破50-Playwright-1.61-WebAuthn-SpaceX-600亿收购Cursor
-cover: /images/20260617-comprehensive-daily-cover.png
+cover: /AI行业日报/images/20260617-comprehensive-daily-cover.png
 date: 2026-06-17 09:30:00
 categories:
   - AI+科技
@@ -13,9 +13,9 @@ tags:
   - 金融
 ---
 
-# 综合日报 | 2026-06-17
+# 2026年6月17日-行业日报-ChatGPT份额首破50-Playwright-1.61-WebAuthn-SpaceX-600亿收购Cursor
 
-![行业日报封面](/images/20260617-comprehensive-daily-cover.png)
+![封面](/AI行业日报/images/20260617-comprehensive-daily-cover.png)
 
 > **摘要**：ChatGPT 市场份额首次跌破 50%（Gemini 27.7%、Claude 10.3% 追赶），Anthropic 企业份额反超 OpenAI；SpaceX 以 600 亿美元股票收购 AI 编程公司 Cursor，创 AI 工具并购纪录；软件测试领域 Playwright 1.61 发布 WebAuthn passkeys 支持、Selenium 4.45 今日发布、pytest 9.1.0 引入破坏性变更，微软 6 月补丁日修复创纪录 206 个漏洞；阿里发布首个具身大模型 Qwen-Robot 系列，谷歌 Android 17 正式版上线；2026 陆家嘴论坛今日开幕，AI 支付密集落地（支付宝"阿宝"、银联、京东、微信支付集体入局）。
 

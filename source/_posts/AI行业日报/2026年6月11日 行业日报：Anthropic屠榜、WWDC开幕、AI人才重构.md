@@ -1,6 +1,6 @@
----
+﻿---
 title: 行业日报丨2026年6月11日：Anthropic屠榜、WWDC开幕、AI人才重构
-cover: /images/comprehensive-daily-cover.png
+cover: /AI行业日报/images/comprehensive-daily-cover.png
 date: 2026-06-11 14:40:00
 categories:
   - AI+科技
@@ -13,9 +13,9 @@ tags:
 ---
 # 行业日报丨2026年6月11日：Anthropic屠榜、WWDC开幕、AI人才重构
 
-> **摘要**：昨日至今，全球科技圈信息密度拉满——Anthropic 发布 Claude Fable 5，SWE-Bench 代码任务解决率达 80.3%；苹果 WWDC 2026 开幕，Xcode 27 和 AI 版 Siri 亮相；国内 AI 人才争夺白热化，大厂"冰火交织"。软件测试领域虽无新发版，但 MeterSphere 等开源平台近期生态持续活跃。
+![封面](/AI行业日报/images/comprehensive-daily-cover.png)
 
-![行业日报封面](/images/comprehensive-daily-cover.png)
+> **摘要**：昨日至今，全球科技圈信息密度拉满——Anthropic 发布 Claude Fable 5，SWE-Bench 代码任务解决率达 80.3%；苹果 WWDC 2026 开幕，Xcode 27 和 AI 版 Siri 亮相；国内 AI 人才争夺白热化，大厂"冰火交织"。软件测试领域虽无新发版，但 MeterSphere 等开源平台近期生态持续活跃。
 
 ---
 

@@ -1,6 +1,6 @@
----
+﻿---
 title: 2026年6月12日-行业日报-Claude新模型鸿蒙开发者大会与AI工程化加速
-cover: /images/20260612-industry-daily-cover.png
+cover: /AI行业日报/images/20260612-industry-daily-cover.png
 date: 2026-06-12 09:21:00
 categories:
   - AI+科技
@@ -12,11 +12,11 @@ tags:
   - IT行业
 ---
 
-# 行业日报 | 2026年6月12日：Claude新模型、鸿蒙开发者大会与AI工程化加速
+# 2026年6月12日-行业日报-Claude新模型鸿蒙开发者大会与AI工程化加速
+
+![封面](/AI行业日报/images/20260612-industry-daily-cover.png)
 
 > **摘要**：今天的行业主线很清晰：AI 模型厂商继续在“能力、价格、合规”三条线上竞争，Anthropic 发布 Claude Fable 5 / Mythos 5，Google 开源文本扩散模型 DiffusionGemma；科技侧，华为 HDC 2026 开幕，鸿蒙生态进入端侧 AI 与多设备协同的新阶段；工程实践侧，GitHub 连续更新 Enterprise Server、Copilot CLI、Agentic Workflows 等能力，开发/测试团队的工作流正在被 AI 原生工具重塑。软件测试板块今日无重大新发布，以下以“近期持续跟踪”方式梳理自动化、性能测试与 AI QA 报告的关键信号。
-
-![行业日报封面](/images/20260612-industry-daily-cover.png)
 
 ---
 

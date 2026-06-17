@@ -1,4 +1,4 @@
----
+﻿---
 title: 螺丝刀换成了电钻，你还在拧螺丝吗？——AI时代测试范式变革解读
 date: 2026-06-10 09:00:00
 tags:
@@ -9,7 +9,7 @@ tags:
   - 测试范式
 categories:
   - 测试领域
-cover: /images/testing-paradigm-shift-cover.png
+cover: /测试领域/images/testing-paradigm-shift-cover.png
 keywords:
   - AI代码审计
   - 测试范式变革
@@ -18,8 +18,6 @@ keywords:
   - AI测试提效
 description: 从一句"螺丝刀换了个电动的还在打螺丝"说起，解读AI代码审计如何重塑测试工作范式，以及测试工程师该如何从执行者转型为规则制定者。
 ---
-
-![封面图](/images/testing-paradigm-shift-cover.png)
 
 ## 螺丝刀换成了电钻，你还在拧螺丝吗？
 
