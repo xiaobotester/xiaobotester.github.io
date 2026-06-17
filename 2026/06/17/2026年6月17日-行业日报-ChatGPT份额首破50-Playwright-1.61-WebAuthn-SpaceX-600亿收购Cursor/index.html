@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="技术,博客,编程,生活">
+    
+    
+    <meta name="author" content="xiaobotester">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+        
+        
+        
+            <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
+        
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://xiaobotester.github.io/2026/06/17/2026年6月17日-行业日报-chatgpt份额首破50-playwright-1.61-webauthn-spacex-600亿收购cursor/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="xiaobotester 的技术博客，分享测试、AI与科技领域的见解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2026年6月17日-行业日报-ChatGPT份额首破50-Playwright-1.61-WebAuthn-SpaceX-600亿收购Cursor">
+<meta property="og:url" content="https://xiaobotester.github.io/2026/06/17/2026%E5%B9%B46%E6%9C%8817%E6%97%A5-%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5-ChatGPT%E4%BB%BD%E9%A2%9D%E9%A6%96%E7%A0%B450-Playwright-1.61-WebAuthn-SpaceX-600%E4%BA%BF%E6%94%B6%E8%B4%ADCursor/">
+<meta property="og:site_name" content="xiaobotester&#39;s Blog">
+<meta property="og:description" content="xiaobotester 的技术博客，分享测试、AI与科技领域的见解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiaobotester.github.io/images/20260617-comprehensive-daily-cover.png">
+<meta property="article:published_time" content="2026-06-17T01:30:00.000Z">
+<meta property="article:modified_time" content="2026-06-17T01:02:35.337Z">
+<meta property="article:author" content="xiaobotester">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="IT行业">
+<meta property="article:tag" content="科技">
+<meta property="article:tag" content="行业日报">
+<meta property="article:tag" content="软件测试">
+<meta property="article:tag" content="金融">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiaobotester.github.io/images/20260617-comprehensive-daily-cover.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/img/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.ico">
+    <meta name="theme-color" content="#2563EB">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            2026年6月17日-行业日报-ChatGPT份额首破50-Playwright-1.61-WebAuthn-SpaceX-600亿收购Cursor | xiaobotester&#39;s Blog
+        
+    </title>
+
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fonts/Chillax/chillax.css">
+
+    <!--- Inject Part-->
+    
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="/css/custom.css">
+                
+    
+            
+                
+                    <script data-swup-reload-script>localStorage.setItem("hexo-theme-redefine-dark-mode","false");document.documentElement.setAttribute("data-theme","light");</script>
+                
+    
+            
+                
+                    <style>.article-content pre{background:#f6f8fa!important;border:1px solid #e1e4e8;border-radius:6px;padding:16px}.article-content pre code{background:transparent!important;color:#24292e}.article-content blockquote{background:rgba(37,99,235,0.06);border-left:4px solid #2563EB;padding:12px 16px;border-radius:0 6px 6px 0}.article-content table{border-collapse:collapse;width:100%}.article-content table th,.article-content table td{border:1px solid #e1e4e8;padding:8px 12px}.article-content table th{background:#f6f8fa}.copy-article-btn,.copy-md-btn{position:fixed;right:20px;z-index:9999;color:#fff;border:none;border-radius:50px;padding:12px 20px;font-size:14px;cursor:pointer;transition:all 0.3s ease;display:flex;align-items:center;gap:6px}.copy-article-btn{bottom:160px;background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 4px 15px rgba(16,185,129,0.3)}.copy-article-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(16,185,129,0.4)}.copy-md-btn{bottom:100px;background:linear-gradient(135deg,#2563EB,#7C3AED);box-shadow:0 4px 15px rgba(37,99,235,0.3)}.copy-md-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.4)}.copy-article-btn i,.copy-md-btn i{font-size:16px}.copy-toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;z-index:99999;opacity:0;transition:opacity 0.3s ease;pointer-events:none}</style>
+                
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/css/build/tailwind.css">
+    
+
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fonts/GeistMono/geist-mono.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fonts/Geist/geist.css">
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"xiaobotester.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"simple","highlight_theme":{"light":"github","dark":"github-dark"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#2563EB","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":null,"description":"xiaobotester 的技术博客，分享测试、AI与科技领域的见解"},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"xiaobotester's Blog","subtitle":{"text":["探索技术前沿，分享测试心得","AI · 科技 · 软件测试 · 行业洞察"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":[{"icon":"fa-brands fa-github","url":"https://github.com/xiaobotester"},{"icon":"fa-solid fa-at","url":"your-email@example.com"},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#2563EB","right":"#7C3AED","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"About":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"欢迎访问我的博客！这里分享 AI、科技与测试领域的最新资讯和技术文章。","show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2026/06/09 00:00:00","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2026/06/09 00:00:00","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/brands.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/solid.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/regular.min.css">
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+	<span class="scroll-progress-bar"></span>
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                xiaobotester&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories"
+                                        >
+                                    <i class="fa-regular fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">45</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">21</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			
+			
+			<img src="/images/20260617-comprehensive-daily-cover.png" alt="2026年6月17日-行业日报-ChatGPT份额首破50-Playwright-1.61-WebAuthn-SpaceX-600亿收购Cursor" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75" />
+			
+			<div class="w-full flex items-center absolute bottom-0 justify-start">
+				<h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">2026年6月17日-行业日报-ChatGPT份额首破50-Playwright-1.61-WebAuthn-SpaceX-600亿收购Cursor</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="https://avatars.githubusercontent.com/xiaobotester">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">xiaobotester</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-06-17 09:30</span>
+        <span class="mobile">2026-06-17 09:30</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-06-17 09:02:35</span>
+            <span class="mobile">2026-06-17 09:02:35</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/AI-%E7%A7%91%E6%8A%80/">AI+科技</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/AI/">AI</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/">行业日报</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%A7%91%E6%8A%80/">科技</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/IT%E8%A1%8C%E4%B8%9A/">IT行业</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E9%87%91%E8%9E%8D/">金融</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="综合日报-2026-06-17"><a href="#综合日报-2026-06-17" class="headerlink" title="综合日报 | 2026-06-17"></a>综合日报 | 2026-06-17</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/20260617-comprehensive-daily-cover.png"
+                      alt="行业日报封面"
+                ></p>
+<blockquote>
+<p><strong>摘要</strong>：ChatGPT 市场份额首次跌破 50%（Gemini 27.7%、Claude 10.3% 追赶），Anthropic 企业份额反超 OpenAI；SpaceX 以 600 亿美元股票收购 AI 编程公司 Cursor，创 AI 工具并购纪录；软件测试领域 Playwright 1.61 发布 WebAuthn passkeys 支持、Selenium 4.45 今日发布、pytest 9.1.0 引入破坏性变更，微软 6 月补丁日修复创纪录 206 个漏洞；阿里发布首个具身大模型 Qwen-Robot 系列，谷歌 Android 17 正式版上线；2026 陆家嘴论坛今日开幕，AI 支付密集落地（支付宝”阿宝”、银联、京东、微信支付集体入局）。</p>
+</blockquote>
+<hr>
+<h2 id="今日速览"><a href="#今日速览" class="headerlink" title="今日速览"></a>今日速览</h2><table>
+<thead>
+<tr>
+<th>方向</th>
+<th>今日重点</th>
+<th>影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>软件测试</td>
+<td>Playwright 1.61 WebAuthn passkeys；Selenium 4.45 五语言同发；微软补丁日 206 漏洞创纪录；Google Vertex AI SDK “Pickle in the Middle” 漏洞</td>
+<td>测试框架认证&#x2F;存储能力升级，安全补丁与 AI SDK 供应链风险并行</td>
+</tr>
+<tr>
+<td>AI 与模型</td>
+<td>ChatGPT 份额首破 50%；SpaceX 600 亿收购 Cursor；阿里 Qwen-Robot 具身三连发；GLM-5.2 编码超 GPT-5.5</td>
+<td>AI 市场格局重塑，具身智能与 AI 工具并购成焦点</td>
+</tr>
+<tr>
+<td>科技行业</td>
+<td>Android 17 + Wear OS 7 发布；高通 Snapdragon Reality Elite XR 芯片；SSD 零售市场几近消失</td>
+<td>移动 OS 迭代与 XR 硬件升温，存储供应链紧张加剧</td>
+</tr>
+<tr>
+<td>IT 职场</td>
+<td>AI 裁员潮加速（日均 974 人）；阿里 QoderWork 上线”意识”功能；美团”觅游”Agent 社区公测</td>
+<td>AI 驱动的组织变革从裁员进入工具赋能新阶段</td>
+</tr>
+<tr>
+<td>金融领域</td>
+<td>2026 陆家嘴论坛开幕；AI 支付密集落地；发改委推进”六张网”含算力网；美联储沃什首秀在即</td>
+<td>金融改革信号明确，AI 支付成金融科技新风口</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="一、软件测试"><a href="#一、软件测试" class="headerlink" title="一、软件测试"></a>一、软件测试</h2><h3 id="1-1-工具平台更新"><a href="#1-1-工具平台更新" class="headerlink" title="1.1 工具平台更新"></a>1.1 工具平台更新</h3><p><strong>Playwright 1.61 发布：原生 WebAuthn passkeys 支持、Web Storage API 全面升级</strong></p>
+<p>微软于 6 月 15 日发布 Playwright v1.61.0，本次更新的核心亮点：</p>
+<ul>
+<li><strong>WebAuthn passkeys</strong>：新增 <code>Credentials</code> 虚拟认证器，通过 <code>browserContext.credentials</code> 让测试注册 passkey 并响应 <code>navigator.credentials.create()/get()</code>，无需真实硬件密钥，所有浏览器通用。这意味着测试团队可以在 CI 流水线中自动化测试 passkey 登录流程，不再依赖物理安全密钥</li>
+<li><strong>Web Storage API</strong>：新增 <code>page.localStorage</code> 和 <code>page.sessionStorage</code>，可直接读写页面存储，简化需要操作 localStorage&#x2F;sessionStorage 的测试场景</li>
+<li><strong>网络增强</strong>：<code>apiResponse.securityDetails()</code> 和 <code>apiResponse.serverAddr()</code> 新增，便于安全测试中检查 TLS 证书和服务器信息</li>
+<li><strong>录屏改进</strong>：<code>connectOverCDP()</code> 新增 <code>artifactsDir</code> 选项；<code>screencast.showActions()</code> 新增 <code>cursor</code> 选项</li>
+<li><strong>测试运行器</strong>：<code>testOptions.video</code> 支持与 <code>trace</code> 相同的模式（<code>&#39;on-all-retries&#39;</code>, <code>&#39;retain-on-first-failure&#39;</code> 等）</li>
+</ul>
+<p>对测试从业者的实际影响：WebAuthn passkeys 支持解决了无密码认证测试的长期痛点。随着 passkey 在各大平台（Apple、Google、Microsoft）的快速普及，测试团队此前只能依赖 mock 或手动测试，现在可以在 CI 中完全自动化。建议关注 <code>browserContext.credentials</code> 的 API 稳定性，在下一个 sprint 中试点集成。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://github.com/microsoft/playwright/releases/tag/v1.61.0" >GitHub Release: Playwright v1.61.0<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>Selenium 4.45.0 今日发布：Java&#x2F;Python&#x2F;DotNet&#x2F;Ruby&#x2F;JavaScript 五语言同步更新</strong></p>
+<p>Selenium 团队于 6 月 17 日发布 v4.45.0，涵盖 40+ 个 PR（#17427 至 #17520），包括功能增强、Bug 修复和依赖更新。主要贡献者包括 @titusfortner、@AutomatedTester、@shs96c、@nvborisenko、@aguspe。详细 changelog 按组件分别提供。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://github.com/SeleniumHQ/selenium/releases/tag/selenium-4.45.0" >GitHub Release: Selenium 4.45.0<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>pytest 9.1.0 发布：引入破坏性变更与多项弃用警告</strong></p>
+<p>pytest 于 6 月 13 日发布 9.1.0 版本，需要注意的关键变化：</p>
+<ul>
+<li><strong>破坏性变更</strong>：使用 <code>--doctest-modules</code> 时，autouse fixtures（session&#x2F;module&#x2F;package 级别）可能执行两次，可能导致 fixture 副作用翻倍</li>
+<li><strong>弃用警告</strong>：类作用域 fixture 定义为实例方法（不加 <code>@staticmethod</code>）将弃用；teardown 期间调用 <code>request.getfixturevalue()</code> 请求未请求过的 fixture 将弃用，pytest 10 中将报错；<code>parametrize</code> 中使用非 <code>collections.abc.Sequence</code> 可迭代对象将弃用</li>
+</ul>
+<p>迁移建议：团队若计划升级至 pytest 10，应提前排查上述弃用项。<code>--doctest-modules</code> 双重执行问题可能导致数据库连接或外部资源初始化重复，建议在 CI 中添加 fixture 执行计数断言。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://github.com/pytest-dev/pytest/releases/tag/9.1.0" >GitHub Release: pytest 9.1.0<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="1-2-安全漏洞情报"><a href="#1-2-安全漏洞情报" class="headerlink" title="1.2 安全漏洞情报"></a>1.2 安全漏洞情报</h3><p><strong>微软 6 月补丁日：206 个漏洞创历史纪录，含 3 个 Zero-Day</strong></p>
+<p>微软 6 月补丁日修复 206 个漏洞，创历史新高。其中 39 个 Critical、167 个 Important，另有 3 个公开披露的 zero-day（CVE-2026-45586、CVE-2026-49160、CVE-2026-50507）。关键高危漏洞包括：</p>
+<ul>
+<li><strong>CVE-2026-45657</strong>（CVSS 9.8）：Windows Kernel use-after-free，可通过网络流量远程代码执行</li>
+<li><strong>CVE-2026-47291</strong>（CVSS 9.8）：HTTP.sys 整数溢出，远程代码执行</li>
+<li><strong>CVE-2026-44815</strong>（CVSS 9.8）：Windows DHCP Client 栈缓冲区溢出，无需认证即可远程代码执行</li>
+<li><strong>CVE-2026-45585</strong>：BitLocker 绕过（PoC “YellowKey” 已公开）</li>
+<li><strong>CVE-2026-49160</strong>：HTTP.sys DoS（HTTP2 Bomb 攻击，45 秒耗尽 64GB RAM）</li>
+</ul>
+<p>测试团队实操建议：HTTP.sys 漏洞（CVE-2026-47291 和 CVE-2026-49160）影响所有 Windows Server 上的 Web 服务，应在补丁验证后立即纳入回归测试。DHCP Client 漏洞（CVE-2026-44815）影响测试网络中的 DHCP 服务，建议检查测试环境是否暴露了 DHCP 端口。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://thehackernews.com/2026/06/microsoft-patches-record-206-flaws.html" >The Hacker News: Microsoft Patches Record 206 Flaws<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>Google Vertex AI SDK “Pickle in the Middle” 漏洞：攻击者可劫持 ML 模型上传并执行代码</strong></p>
+<p>Palo Alto Networks Unit 42 于 6 月 16 日披露 Google Cloud Vertex AI SDK for Python 存在漏洞，命名为 “Pickle in the Middle”。攻击者无需访问受害者项目，仅需自己的 GCP 项目和受害者的项目 ID（通常公开），即可劫持 ML 模型上传并在 Google 服务基础设施中执行代码。漏洞根源在于 SDK 选择临时 Cloud Storage bucket 的方式可预测（<code>project-vertex-staging-region</code>），且不验证 bucket 所有权。</p>
+<p><strong>修复方案</strong>：升级到 SDK 1.148.0 或更高版本。目前未见野外利用。</p>
+<p>对测试团队的启示：AI 模型供应链安全测试应纳入 CI&#x2F;CD 流程。建议检查团队使用的 AI SDK 是否存在类似的 bucket 所有权验证缺失问题，并在 API 安全测试中新增 ML 模型上传路径的权限验证测试项。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://thehackernews.com/2026/06/google-vertex-ai-sdk-flaw-let.html" >The Hacker News: Google Vertex AI SDK Flaw<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>Agentjacking 攻击：AI 编程 Agent 被诱导执行恶意代码，2388 个组织暴露</strong></p>
+<p>Tenet Security 于 6 月 12 日披露新攻击类别 “Agentjacking”：攻击者通过伪造 Sentry 错误事件，利用 Sentry MCP 服务器将恶意指令传递给 AI 编程 Agent（Claude Code、Cursor 等）。攻击者只需目标的 Sentry DSN（公开的写入凭证），即可窃取环境变量、Git 凭证、私有仓库 URL。测试中 85% 成功率，2388 个组织暴露了可注入的 DSN。</p>
+<p>Sentry 承认问题但称”技术上不可防御”，已激活全局内容过滤器。Sentry Python SDK 2.63.0（今日发布）包含相关修复。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://thehackernews.com/2026/06/agentjacking-attack-tricks-ai-coding.html" >The Hacker News: Agentjacking Attack<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> | <a class="link"   target="_blank" rel="noopener" href="https://github.com/getsentry/sentry-python/releases/tag/2.63.0" >GitHub Release: Sentry Python SDK 2.63.0<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h2 id="二、AI-与模型厂商"><a href="#二、AI-与模型厂商" class="headerlink" title="二、AI 与模型厂商"></a>二、AI 与模型厂商</h2><h3 id="2-1-市场格局"><a href="#2-1-市场格局" class="headerlink" title="2.1 市场格局"></a>2.1 市场格局</h3><p><strong>ChatGPT 市场份额首次跌破 50%：Gemini 27.7%、Claude 10.3% 持续追赶</strong></p>
+<p>据 Sensor Tower《2026 年 AI 状态报告》，ChatGPT 市场份额自 1 月以来持续下滑，5 月降至 46.4%，首次跌破 50%。Gemini 以 27.7% 位居第二（月活 6.62 亿），Claude 以 10.3% 位居第三（月活 2.45 亿）。ChatGPT 仍有超 11 亿月活用户领先。Claude 付费转化率达 13%，领先行业。</p>
+<p>2026 上半年 AI 应用下载量预计近 23 亿次，用户支出超 42 亿美元（去年同期 18.3 亿）。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://techcrunch.com/2026/06/16/chatgpts-market-share-slips-below-50-for-first-time/" >TechCrunch: ChatGPT’s Market Share Slips Below 50%<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>Anthropic 企业 AI 份额反超 OpenAI：被封禁反而助推企业采用</strong></p>
+<p>特朗普政府要求 Anthropic 禁止非美国人（包括其员工）访问 Mythos 5 和 Fable 5 模型，Anthropic 被迫从市场撤下最新模型。然而 Ramp 数据显示，Anthropic 5 月企业 AI 订阅份额升至 41%，首次超越 OpenAI 的 39.5%。Anthropic 此前完成 650 亿美元融资，估值 9650 亿美元，已秘密提交 IPO 申请，并实现首个盈利季度。分析认为”模型被标为危险”反而提升了企业采用意愿。Opus 4.8 已于 5 月底发布。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://techcrunch.com/2026/06/16/anthropics-latest-feud-with-the-trump-admin-may-actually-help-it-sales-data-suggests/" >TechCrunch: Anthropic’s Latest Feud May Actually Help It<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="2-2-重大并购"><a href="#2-2-重大并购" class="headerlink" title="2.2 重大并购"></a>2.2 重大并购</h3><p><strong>SpaceX 以 600 亿美元股票收购 Cursor：AI 编程工具史上最大并购</strong></p>
+<p>SpaceX 于 6 月 16 日宣布以 600 亿美元股票收购 AI 编程创业公司 Cursor（原名 Anysphere），预计 Q3 完成。Cursor 此前正计划从 a16z、Thrive、英伟达融资 20 亿美元（估值 500 亿）。SpaceX IPO 后股价从 135 美元飙至 200 美元以上，市值增约 1 万亿美元，总市值达 2.6 万亿美元（一度超越亚马逊）。xAI 此前已招募 Cursor 两名高级工程负责人并出租数据中心。SpaceX 向投资者展示的 TAM 约 28 万亿美元，其中 AI 相关占 26 万亿。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://techcrunch.com/2026/06/16/spacex-to-acquire-cursor-for-60b-in-stock-days-after-blockbuster-ipo/" >TechCrunch: SpaceX to Acquire Cursor for $60B<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> | <a class="link"   target="_blank" rel="noopener" href="https://36kr.com/p/3855869611856899" >36氪<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="2-3-产品发布与模型更新"><a href="#2-3-产品发布与模型更新" class="headerlink" title="2.3 产品发布与模型更新"></a>2.3 产品发布与模型更新</h3><p><strong>阿里发布首个具身大模型 Qwen-Robot 系列：VLA 操作 + VLN 导航 + 世界模型三连发</strong></p>
+<p>阿里巴巴于 6 月 16 日发布千问具身智能大模型 Qwen-Robot 系列，包含三款模型：</p>
+<ul>
+<li><strong>Qwen-RobotManip</strong>（VLA 操作模型）：在 38000+ 小时语料上预训练，仅用开源数据，在 RoboChallenge 真机测评中两个版本包揽前二</li>
+<li><strong>Qwen-RobotNav</strong>（VLN 移动模型）：统一语言导航、目标搜索、自动驾驶等五大任务</li>
+<li><strong>Qwen-RobotWorld</strong>（世界模型）：推理和模拟物理世界状态</li>
+</ul>
+<p>已搭载宇树 Go2 四足机器人完成寻物导航测试。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.qbitai.com/2026/06/435873.html" >量子位: 阿里发布首个具身大模型 Qwen-Robot 系列<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>智谱 GLM-5.2 开源模型：编码基准超越 GPT-5.5，成本仅 1&#x2F;6</strong></p>
+<p>智谱 AI（Z.ai）发布开源权重模型 GLM-5.2，在多个长程编码基准测试中超越 GPT-5.5，成本仅为后者的 1&#x2F;6。该模型允许企业在自有基础设施上部署前沿级 AI，消除供应商锁定。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://venturebeat.com/category/ai" >VentureBeat: Z.ai’s GLM-5.2 Beats GPT-5.5<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>微博 VibeThinker-3B 引发基准争议：30 亿参数声称匹敌旗舰模型</strong></p>
+<p>新浪微博 9 人研究团队在 arXiv 发布 14 页技术报告，声称仅 30 亿参数的 VibeThinker-3B 模型在推理性能上可匹敌或超越 Google DeepMind、OpenAI、Anthropic 和 DeepSeek 的旗舰系统（参数量大数百倍），引发 AI 社区对基准测试有效性的新一轮争论。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://venturebeat.com/category/ai" >VentureBeat: Why Weibo’s VibeThinker-3B Has the AI World Arguing<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="2-4-融资动态"><a href="#2-4-融资动态" class="headerlink" title="2.4 融资动态"></a>2.4 融资动态</h3><p><strong>DeepSeek 融资细节曝光：梁文锋保控制权，改写科创企业融资剧本</strong></p>
+<p>DeepSeek 融资细节曝光，梁文锋通过精明的设计在融资中保住了控制权，被评价为”改写了科创企业融资的剧本”。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://36kr.com/p/3855773631976456" >36氪: 曝 DeepSeek 融资细节<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>MiniMax 股价两周暴跌 53%：解禁前泡沫破裂，两年巨亏 160 亿元</strong></p>
+<p>MiniMax 上市不到一个月即面临解禁，但股价两周暴跌 53%，两年巨亏 160 亿元。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://36kr.com/p/3855844043668356" >36氪: MiniMax 的泡沫却先破了<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h2 id="三、科技行业"><a href="#三、科技行业" class="headerlink" title="三、科技行业"></a>三、科技行业</h2><h3 id="3-1-操作系统与平台"><a href="#3-1-操作系统与平台" class="headerlink" title="3.1 操作系统与平台"></a>3.1 操作系统与平台</h3><p><strong>Google 发布 Android 17 + Wear OS 7：Lyria 3 音乐生成、Gemini Omni 视频编辑、多任务 Bubble Bar</strong></p>
+<p>Google 于 6 月 16 日发布 Android 17 正式版（首发 Pixel 设备）及 Wear OS 7。核心更新：</p>
+<ul>
+<li><strong>AI 功能</strong>：音乐生成模型 Lyria 3（文本&#x2F;图像生成音乐）、多模态 Gemini Omni（视频编辑）、AudioLM 语音翻译（Pixel 10a）</li>
+<li><strong>多任务</strong>：新增 Bubble Bar 多任务 UI、折叠屏游戏模式</li>
+<li><strong>Wear OS 7</strong>：续航提升 10%，将引入 Gemini Intelligence 个性化小部件功能</li>
+</ul>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://techcrunch.com/2026/06/16/android-17-launches-with-new-multitasking-tools-as-google-expands-gemini-features/" >TechCrunch: Android 17 Launches<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="3-2-芯片与硬件"><a href="#3-2-芯片与硬件" class="headerlink" title="3.2 芯片与硬件"></a>3.2 芯片与硬件</h3><p><strong>高通发布 Snapdragon Reality Elite XR 芯片：更强智能眼镜即将到来</strong></p>
+<p>高通发布 Snapdragon Reality Elite 芯片，将首先搭载于 Xreal Project Aura Android XR 眼镜，今秋上市。该芯片暗示更强智能眼镜产品即将到来，XR 硬件生态进入新阶段。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.theverge.com/gadgets/950229/qualcomm-snapdragon-reality-elite-xr-smart-glasses-wearables" >The Verge: Qualcomm’s Latest Chip Hints at More Powerful Smart Glasses<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>微软 Surface Laptop 8 &#x2F; Surface Pro 12 搭载 Snapdragon X2 芯片</strong></p>
+<p>微软 Surface Laptop 8 和 Surface Pro 12 现搭载高通 Snapdragon X2 芯片，ARM PC 生态进一步扩展。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.theverge.com/tech/950146/microsoft-surface-laptop-8-surface-pro-12-snapdragon-x2-specs-price" >The Verge: Surface Laptop 8 and Pro 12 with Snapdragon X2<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="3-3-供应链"><a href="#3-3-供应链" class="headerlink" title="3.3 供应链"></a>3.3 供应链</h3><p><strong>SSD 零售市场几近消失：NAND 内存短缺加剧，2027 年或更恶化</strong></p>
+<p>Silicon Motion 副总裁表示，NAND 内存短缺迫使 PC 厂商向第三方模组厂采购 SSD，零售 SSD 市场几近消失。供应商预计 2027 年情况将进一步恶化。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.theverge.com/tech" >The Verge: The Retail SSD Market Has Almost Disappeared<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="3-4-前沿科技"><a href="#3-4-前沿科技" class="headerlink" title="3.4 前沿科技"></a>3.4 前沿科技</h3><p><strong>宇树机器人将挑战登顶珠穆朗玛峰</strong></p>
+<p>宇树科技宣布其机器人将挑战登顶珠穆朗玛峰，标志着人形&#x2F;四足机器人极端环境适应能力进入新里程碑。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.qbitai.com/2026/06/435817.html" >量子位: 宇树机器人要登珠峰了<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>2026 智源大会开幕：推动 AI、物理世界和生命科学”三体互动”</strong></p>
+<p>2026 智源大会开幕，主题为推动 AI、物理世界和生命科学的”三体互动”。天工 AI 在会上公布 Matrix-Game 3.5 世界模型最新技术突破。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.qbitai.com/2026/06/435394.html" >量子位: 2026 智源大会开幕<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h2 id="四、IT-职场"><a href="#四、IT-职场" class="headerlink" title="四、IT 职场"></a>四、IT 职场</h2><h3 id="4-1-行业动态"><a href="#4-1-行业动态" class="headerlink" title="4.1 行业动态"></a>4.1 行业动态</h3><p><strong>AI 裁员潮加速：2026 年至今 363 起裁员影响近 15 万人，日均 974 人</strong></p>
+<p>据 TechCrunch 报道，2026 年至今科技行业已发生 363 起裁员，影响近 15 万人，日均裁员 974 人，速度较去年加快 44%。上月裁员近 4 万人，创两年来单月新高。AI 已连续三个月成为各行业裁员最常被引用的原因。但知名 VC Marc Andreessen 称 AI 只是”银弹借口”，认为大公司普遍超员 25%-75%。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://techcrunch.com/2026/06/15/the-ai-layoff-wave-is-becoming-a-powder-keg/" >TechCrunch: The AI Layoff Wave Is Becoming a Powder Keg<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>Rivian 发布 R2 后数日裁员数百人：2022 年以来第五次裁员</strong></p>
+<p>Rivian 在发布 R2 SUV 后数日裁员数百人（不到 2% 员工），系公司 2022 年以来第五次裁员，仍在寻求首次盈利。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.theverge.com/tech" >The Verge: Rivian Lays Off Hundreds of Employees<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> | <a class="link"   target="_blank" rel="noopener" href="https://techcrunch.com/" >TechCrunch<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>Robinhood 裁员 10% 归因 AI，分析认为缺乏说服力</strong></p>
+<p>Robinhood 裁员 10% 并在内部备忘录中将原因归咎于 AI，但分析认为此说法缺乏说服力。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://techcrunch.com/2026/06/16/robinhoods-note-on-10-layoffs-shows-blaming-ai-isnt-cutting-it/" >TechCrunch: Robinhood’s Note on 10% Layoffs<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="4-2-工具与平台"><a href="#4-2-工具与平台" class="headerlink" title="4.2 工具与平台"></a>4.2 工具与平台</h3><p><strong>阿里云 QoderWork 上线”意识”功能；美团”觅游”Agent 社区开放公测</strong></p>
+<p>阿里云桌面 AI 助理 QoderWork 上线”意识”功能，集成记忆、反思、技能进化三个模块，可主动整理冗余信息并将高频任务沉淀为可复用技能。同时，美团基础研发平台 AI 原生团队孵化的首个”Agent 社区”觅游于 6 月 15 日面向全量用户开放公测，支持关联 OpenClaw、Codex、Claude Code、Hermes 等主流 AI 智能体。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://36kr.com/p/3856525981275138" >36氪: 阿里云 QoderWork 上线”意识”功能<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><strong>微软评估采用开源模型降低 AI 智能体运行成本</strong></p>
+<p>微软正在评估采用开源 AI 模型来降低智能体运行成本，反映 AI 巨头开始精打细算”经济账”。Databricks 同日推出通用 AI 智能体，押注企业级 AI 应用市场。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.cls.cn/" >财联社<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h2 id="五、金融领域"><a href="#五、金融领域" class="headerlink" title="五、金融领域"></a>五、金融领域</h2><h3 id="5-1-监管与政策"><a href="#5-1-监管与政策" class="headerlink" title="5.1 监管与政策"></a>5.1 监管与政策</h3><p><strong>2026 陆家嘴论坛今日开幕：八场全体大会聚焦全球金融治理与资本市场改革</strong></p>
+<p>2026 陆家嘴论坛于今日（6 月 17 日）在上海正式开幕，论坛持续至 6 月 18 日，主题为”全球治理倡议下的金融发展与合作：新愿景、新挑战和新机遇”。由国家金融监督管理总局局长丁向群与上海市市长龚正担任共同轮值主席，70 余名中外嘉宾出席。</p>
+<p>八场全体大会议题涵盖：全球金融治理改革、资本市场建设、沪港金融协同、科技金融、普惠金融、可持续金融等。按惯例，人民银行、国家金融监督管理总局、证监会主要负责人均将在论坛期间发表主题演讲。去年论坛期间证监会推出深化科创板改革”1+6”政策措施。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.cls.cn/" >财联社: 2026 陆家嘴论坛今日开幕<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> | <a class="link"   target="_blank" rel="noopener" href="https://finance.sina.com.cn/jjxw/2026-06-17/doc-inicsezc3994517.shtml" >新浪财经<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="5-2-金融科技"><a href="#5-2-金融科技" class="headerlink" title="5.2 金融科技"></a>5.2 金融科技</h3><p><strong>AI 支付密集落地：支付宝”阿宝”史上最大改版、银联&#x2F;京东&#x2F;微信支付集体入局</strong></p>
+<p>国内支付巨头集体进入”对话即交易”时代：</p>
+<ul>
+<li><strong>支付宝</strong>：6 月 16 日正式推出 AI 版支付宝”阿宝”，为支付宝史上最大改版，Token Pay 首接 MiniMax M3 大模型</li>
+<li><strong>银联商务</strong>：同日推出 AI 支付产品</li>
+<li><strong>京东</strong>：6 月 11 日发布智能体自主支付协议（A2P2）</li>
+<li><strong>微信支付</strong>：正小范围测试 AI 支付能力，”AI 专属卡”最快本周内上线</li>
+</ul>
+<p>AI 时代支付入口从”陈列式”转向”对话式”，平台意在抢占下一代交互入口话语权。这也标志着国内首个面向 MaaS 的支付解决方案投入规模化应用。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://36kr.com/p/3855849150764291" >36氪: 巨头密集落地 AI 支付产品<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> | <a class="link"   target="_blank" rel="noopener" href="https://www.cls.cn/" >财联社<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="5-3-宏观政策"><a href="#5-3-宏观政策" class="headerlink" title="5.3 宏观政策"></a>5.3 宏观政策</h3><p><strong>国家发改委推进”六张网”建设：含算力网，万亿级投资周期开启</strong></p>
+<p>国家发改委主任郑栅洁 6 月 16 日主持召开民营企业座谈会，围绕”六张网”建设（水网、新型电网、算力网、新一代通信网、城市地下管网、物流网）听取意见。郑栅洁表示，”六张网”建设兼顾传统基础设施补短板与新型基础设施布局，将统筹用好政府资金和新型政策性金融工具，推进基础设施竞争性领域向经营主体公平开放。</p>
+<p>财联社早报指出，我国算力网建设已开启万亿级投资周期，DeepSeek 首轮融资或将落地。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.cls.cn/" >财联社: 发改委推进”六张网”建设<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="5-4-国际金融"><a href="#5-4-国际金融" class="headerlink" title="5.4 国际金融"></a>5.4 国际金融</h3><p><strong>美联储新主席沃什”首秀”倒计时：调查预计 2027 年前不降息</strong></p>
+<p>美联储新任主席沃什即将迎来”首秀”，调查预计美联储 2027 年前不会降息，其沟通机制改革获支持。沃什可能打破 14 年惯例，市场关注其首次公开表态的政策方向。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.cls.cn/" >财联社: 沃什”首秀”倒计时<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<h3 id="5-5-金融机构"><a href="#5-5-金融机构" class="headerlink" title="5.5 金融机构"></a>5.5 金融机构</h3><p><strong>中央结算公司拟将做市商结算服务费降至 7.5 折；5 月商业银行增持债券 1.7 万亿</strong></p>
+<p>债市方面，中央结算公司拟将做市商结算服务费降至 7.5 折，降低做市成本。5 月商业银行增持各类债券超过 1.7 万亿元，反映银行体系流动性配置需求强劲。</p>
+<blockquote>
+<p>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.cls.cn/" >财联社<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<hr>
+<p><em>本日报内容覆盖 2026 年 6 月 16 日至 6 月 17 日（北京时间）。所有事件均来自可查证的一手来源，关键数据已交叉验证。</em></p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 2026年6月17日-行业日报-ChatGPT份额首破50-Playwright-1.61-WebAuthn-SpaceX-600亿收购Cursor</li>
+        <li><strong>作者:</strong> xiaobotester</li>
+        <li><strong>创建于
+                :</strong> 2026-06-17 09:30:00</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2026-06-17 09:02:35
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://xiaobotester.github.io/2026/06/17/2026年6月17日-行业日报-ChatGPT份额首破50-Playwright-1.61-WebAuthn-SpaceX-600亿收购Cursor/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/AI/">#AI</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">#软件测试</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/">#行业日报</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E7%A7%91%E6%8A%80/">#科技</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/IT%E8%A1%8C%E4%B8%9A/">#IT行业</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E9%87%91%E8%9E%8D/">#金融</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2026/06/16/2026%E5%B9%B46%E6%9C%8816%E6%97%A5-%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5-GPT-5.6%E4%BC%A0%E4%B8%8B%E5%91%A8%E5%8F%91%E5%B8%83%EF%BC%8CAnthropic%E8%B5%B4%E7%99%BD%E5%AE%AB%E8%B0%88%E5%88%A4/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">2026年6月16日-行业日报-GPT-5.6传下周发布，Anthropic赴白宫谈判</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">2026年6月17日-行业日报-ChatGPT份额首破50-Playwright-1.61-WebAuthn-SpaceX-600亿收购Cursor</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E6%97%A5%E6%8A%A5-2026-06-17"><span class="nav-text">综合日报 | 2026-06-17</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8A%E6%97%A5%E9%80%9F%E8%A7%88"><span class="nav-text">今日速览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="nav-text">一、软件测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%B7%A5%E5%85%B7%E5%B9%B3%E5%8F%B0%E6%9B%B4%E6%96%B0"><span class="nav-text">1.1 工具平台更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E%E6%83%85%E6%8A%A5"><span class="nav-text">1.2 安全漏洞情报</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81AI-%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%8E%82%E5%95%86"><span class="nav-text">二、AI 与模型厂商</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%B8%82%E5%9C%BA%E6%A0%BC%E5%B1%80"><span class="nav-text">2.1 市场格局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%87%8D%E5%A4%A7%E5%B9%B6%E8%B4%AD"><span class="nav-text">2.2 重大并购</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BA%A7%E5%93%81%E5%8F%91%E5%B8%83%E4%B8%8E%E6%A8%A1%E5%9E%8B%E6%9B%B4%E6%96%B0"><span class="nav-text">2.3 产品发布与模型更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E8%9E%8D%E8%B5%84%E5%8A%A8%E6%80%81"><span class="nav-text">2.4 融资动态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%A7%91%E6%8A%80%E8%A1%8C%E4%B8%9A"><span class="nav-text">三、科技行业</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%B9%B3%E5%8F%B0"><span class="nav-text">3.1 操作系统与平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E8%8A%AF%E7%89%87%E4%B8%8E%E7%A1%AC%E4%BB%B6"><span class="nav-text">3.2 芯片与硬件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E4%BE%9B%E5%BA%94%E9%93%BE"><span class="nav-text">3.3 供应链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E5%89%8D%E6%B2%BF%E7%A7%91%E6%8A%80"><span class="nav-text">3.4 前沿科技</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81IT-%E8%81%8C%E5%9C%BA"><span class="nav-text">四、IT 职场</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E8%A1%8C%E4%B8%9A%E5%8A%A8%E6%80%81"><span class="nav-text">4.1 行业动态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%B9%B3%E5%8F%B0"><span class="nav-text">4.2 工具与平台</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%87%91%E8%9E%8D%E9%A2%86%E5%9F%9F"><span class="nav-text">五、金融领域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E7%9B%91%E7%AE%A1%E4%B8%8E%E6%94%BF%E7%AD%96"><span class="nav-text">5.1 监管与政策</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E9%87%91%E8%9E%8D%E7%A7%91%E6%8A%80"><span class="nav-text">5.2 金融科技</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%AE%8F%E8%A7%82%E6%94%BF%E7%AD%96"><span class="nav-text">5.3 宏观政策</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E5%9B%BD%E9%99%85%E9%87%91%E8%9E%8D"><span class="nav-text">5.4 国际金融</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E9%87%91%E8%9E%8D%E6%9C%BA%E6%9E%84"><span class="nav-text">5.5 金融机构</span></a></li></ol></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2026</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">xiaobotester</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 21 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+            
+                
+        
+                
+        
+                
+
+                    
+                        <script data-swup-reload-script>document.addEventListener("DOMContentLoaded",function(){var siteUrl="https://xiaobotester.github.io";function fullUrl(src){if(!src)return"";if(src.startsWith("http"))return src;if(src.startsWith("//"))return"https:"+src;return siteUrl+(src.startsWith("/")?src:"/"+src)}function htmlToMd(el){var md="";el.childNodes.forEach(function(node){if(node.nodeType===3){md+=node.textContent;return}if(node.nodeType!==1)return;var tag=node.tagName.toLowerCase();if(tag==="h1")md+="\n# "+node.textContent.trim()+"\n\n";else if(tag==="h2")md+="\n## "+node.textContent.trim()+"\n\n";else if(tag==="h3")md+="\n### "+node.textContent.trim()+"\n\n";else if(tag==="h4")md+="\n#### "+node.textContent.trim()+"\n\n";else if(tag==="h5")md+="\n##### "+node.textContent.trim()+"\n\n";else if(tag==="h6")md+="\n###### "+node.textContent.trim()+"\n\n";else if(tag==="p")md+=inlineToMd(node)+"\n\n";else if(tag==="blockquote"){var lines=htmlToMd(node).trim().split("\n");md+="\n"+lines.map(function(l){return"> "+l}).join("\n")+"\n\n"}else if(tag==="pre"){var code=node.querySelector("code");var text=code?code.textContent:node.textContent;md+="\n```\n"+text.trim()+"\n```\n\n"}else if(tag==="ul"||tag==="ol"){var items=node.querySelectorAll(":scope > li");items.forEach(function(li,i){var prefix=tag==="ol"?(i+1)+". ":"- ";md+=prefix+inlineToMd(li).trim()+"\n"});md+="\n"}else if(tag==="table"){var rows=node.querySelectorAll("tr");rows.forEach(function(row,ri){var cells=row.querySelectorAll("th,td");var line="| "+Array.from(cells).map(function(c){return c.textContent.trim()}).join(" | ")+" |";md+=line+"\n";if(ri===0){md+="| "+Array.from(cells).map(function(){return"---"}).join(" | ")+" |\n"}});md+="\n"}else if(tag==="hr")md+="\n---\n\n";else if(tag==="br")md+="\n";else if(tag==="img"){var alt=node.getAttribute("alt")||"";var src=fullUrl(node.getAttribute("data-src")||node.getAttribute("src")||"");md+="!["+alt+"]("+src+")\n\n"}else md+=htmlToMd(node)});return md}function inlineToMd(el){var result="";el.childNodes.forEach(function(node){if(node.nodeType===3){result+=node.textContent;return}if(node.nodeType!==1)return;var tag=node.tagName.toLowerCase();if(tag==="strong"||tag==="b")result+="**"+node.textContent+"**";else if(tag==="em"||tag==="i")result+="*"+node.textContent+"*";else if(tag==="code")result+="`"+node.textContent+"`";else if(tag==="a"){var href=node.getAttribute("href")||"";if(!href.startsWith("http"))href=fullUrl(href);result+="["+node.textContent+"]("+href+")"}else if(tag==="del"||tag==="s")result+="~~"+node.textContent+"~~";else if(tag==="img"){var alt=node.getAttribute("alt")||"";var src=fullUrl(node.getAttribute("data-src")||node.getAttribute("src")||"");result+="!["+alt+"]("+src+")"}else if(tag==="br")result+="\n";else result+=node.textContent});return result}function copyRichText(articleContent,toast){var clone=articleContent.cloneNode(true);clone.style.cssText="position:fixed;left:-9999px;top:0;background:#fff;color:#333;padding:20px;font-size:16px;line-height:1.8";clone.querySelectorAll("img").forEach(function(img){var realSrc=img.getAttribute("data-src")||img.getAttribute("src")||"";img.setAttribute("src",fullUrl(realSrc));img.removeAttribute("data-src");img.removeAttribute("loading");img.removeAttribute("class");img.style.cssText="max-width:100%;height:auto;display:block;margin:16px auto"});clone.querySelectorAll("*").forEach(function(el){var tag=el.tagName.toLowerCase();if(tag==="img")return;if(tag==="pre"){el.style.cssText="background:#f6f8fa;color:#24292e;border:1px solid #e1e4e8;border-radius:6px;padding:16px;font-size:14px;line-height:1.6;overflow:auto;margin:16px 0"}else if(tag==="code"&&!el.closest("pre")){el.style.cssText="background:#f6f8fa;color:#d63384;padding:2px 6px;border-radius:3px;font-size:14px"}else if(tag==="code"&&el.closest("pre")){el.style.cssText="background:transparent;color:#24292e;font-size:14px"}else if(tag==="blockquote"){el.style.cssText="background:#f0f7ff;border-left:4px solid #2563EB;padding:12px 16px;color:#555;margin:16px 0"}else if(tag==="h1"){el.style.cssText="color:#1a1a1a;font-size:24px;font-weight:bold;margin:24px 0 12px"}else if(tag==="h2"){el.style.cssText="color:#1a1a1a;font-size:20px;font-weight:bold;margin:20px 0 10px"}else if(tag==="h3"){el.style.cssText="color:#1a1a1a;font-size:18px;font-weight:bold;margin:16px 0 8px"}else if(tag.match(/^h[4-6]$/)){el.style.cssText="color:#1a1a1a;font-size:16px;font-weight:bold;margin:12px 0 6px"}else if(tag==="a"){el.style.color="#2563EB"}else if(tag==="p"){el.style.cssText="color:#333;margin:8px 0;line-height:1.8"}else if(tag==="li"){el.style.cssText="color:#333;line-height:1.8"}else if(tag==="ul"||tag==="ol"){el.style.cssText="color:#333;padding-left:20px;margin:8px 0"}else if(tag==="strong"||tag==="b"){el.style.color="#1a1a1a"}else if(tag==="table"){el.style.cssText="border-collapse:collapse;width:100%;margin:16px 0;border:1px solid #e1e4e8;table-layout:fixed;word-break:break-all"}else if(tag==="thead"){el.style.cssText="background:#f6f8fa"}else if(tag==="tbody"){el.style.cssText="background:#fff"}else if(tag==="tr"){el.style.cssText="border-bottom:1px solid #e1e4e8"}else if(tag==="th"){el.style.cssText="background:#f6f8fa;color:#1a1a1a;border:1px solid #e1e4e8;padding:10px 14px;font-weight:bold;font-size:14px;text-align:left;word-break:break-all"}else if(tag==="td"){el.style.cssText="color:#333;border:1px solid #e1e4e8;padding:10px 14px;font-size:14px;text-align:left;word-break:break-all"}else{el.style.color="#333"}});document.body.appendChild(clone);var range=document.createRange();range.selectNodeContents(clone);var selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);try{document.execCommand("copy");toast.textContent="已复制富文本！可粘贴到公众号";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)}catch(e){toast.textContent="复制失败";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)}selection.removeAllRanges();document.body.removeChild(clone)}function initCopyBtns(){var articleContent=document.querySelector(".article-content");if(!articleContent)return;document.querySelectorAll(".copy-article-btn,.copy-md-btn").forEach(function(b){b.remove()});var toast=document.querySelector(".copy-toast");if(!toast){toast=document.createElement("div");toast.className="copy-toast";document.body.appendChild(toast)}var btnRich=document.createElement("button");btnRich.className="copy-article-btn";btnRich.innerHTML="<i class=\"fa-regular fa-copy\"></i> 复制全文";btnRich.addEventListener("click",function(){copyRichText(articleContent,toast)});document.body.appendChild(btnRich);var btnMd=document.createElement("button");btnMd.className="copy-md-btn";btnMd.innerHTML="<i class=\"fa-regular fa-file-code\"></i> 复制MD";btnMd.addEventListener("click",function(){var mdText=htmlToMd(articleContent).replace(/\n{3,}/g,"\n\n").trim();navigator.clipboard.writeText(mdText).then(function(){toast.textContent="已复制Markdown！";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)}).catch(function(){var ta=document.createElement("textarea");ta.value=mdText;ta.style.cssText="position:fixed;left:-9999px";document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);toast.textContent="已复制Markdown！";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)})});document.body.appendChild(btnMd)}initCopyBtns();if(document.querySelector("[data-swup]")){document.addEventListener("swup:contentReplaced",initCopyBtns)}});</script>
+                    
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/Swup.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupSlideTheme.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupScriptsPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupProgressPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupScrollPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupPreloadPlugin.min.js" ></script>
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	<script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/main.js" ></script>
+
+
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/odometer.min.js" ></script>
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+  <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/Typed.min.js" ></script>
+
+
+
+
+
+
+
+
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/moment-with-locales.min.js" data-swup-reload-script></script>
+
+
+	
+</body>
+
+</html>
