@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="技术,博客,编程,生活">
+    
+    
+    <meta name="author" content="xiaobotester">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+        
+        
+        
+            <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
+        
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://xiaobotester.github.io/2026/06/25/2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行mlf加量2000亿/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="xiaobotester 的技术博客，分享测试、AI与科技领域的见解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿">
+<meta property="og:url" content="https://xiaobotester.github.io/2026/06/25/2026%E5%B9%B46%E6%9C%8825%E6%97%A5-%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5-%E5%A4%8F%E5%AD%A3%E8%BE%BE%E6%B2%83%E6%96%AF%E5%8F%91%E5%B8%83%E5%8D%81%E5%A4%A7%E6%96%B0%E5%85%B4%E6%8A%80%E6%9C%AF%E5%A4%AE%E8%A1%8CMLF%E5%8A%A0%E9%87%8F2000%E4%BA%BF/">
+<meta property="og:site_name" content="xiaobotester&#39;s Blog">
+<meta property="og:description" content="xiaobotester 的技术博客，分享测试、AI与科技领域的见解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiaobotester.github.io/AI%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/images/20260625-industry-daily-cover.png">
+<meta property="article:published_time" content="2026-06-25T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-25T01:38:55.554Z">
+<meta property="article:author" content="xiaobotester">
+<meta property="article:tag" content="AI大模型">
+<meta property="article:tag" content="十大新兴技术">
+<meta property="article:tag" content="夏季达沃斯">
+<meta property="article:tag" content="央行MLF">
+<meta property="article:tag" content="规模化创新">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiaobotester.github.io/AI%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/images/20260625-industry-daily-cover.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/img/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.ico">
+    <meta name="theme-color" content="#2563EB">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿 | xiaobotester&#39;s Blog
+        
+    </title>
+
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fonts/Chillax/chillax.css">
+
+    <!--- Inject Part-->
+    
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="/css/custom.css">
+                
+    
+            
+                
+                    <script data-swup-reload-script>localStorage.setItem("hexo-theme-redefine-dark-mode","false");document.documentElement.setAttribute("data-theme","light");</script>
+                
+    
+            
+                
+                    <style>.article-content pre{background:#f6f8fa!important;border:1px solid #e1e4e8;border-radius:6px;padding:16px}.article-content pre code{background:transparent!important;color:#24292e}.article-content blockquote{background:rgba(37,99,235,0.06);border-left:4px solid #2563EB;padding:12px 16px;border-radius:0 6px 6px 0}.article-content table{border-collapse:collapse;width:100%}.article-content table th,.article-content table td{border:1px solid #e1e4e8;padding:8px 12px}.article-content table th{background:#f6f8fa}.copy-article-btn,.copy-md-btn{position:fixed;right:20px;z-index:9999;color:#fff;border:none;border-radius:50px;padding:12px 20px;font-size:14px;cursor:pointer;transition:all 0.3s ease;display:flex;align-items:center;gap:6px}.copy-article-btn{bottom:160px;background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 4px 15px rgba(16,185,129,0.3)}.copy-article-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(16,185,129,0.4)}.copy-md-btn{bottom:100px;background:linear-gradient(135deg,#2563EB,#7C3AED);box-shadow:0 4px 15px rgba(37,99,235,0.3)}.copy-md-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.4)}.copy-article-btn i,.copy-md-btn i{font-size:16px}.copy-toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;z-index:99999;opacity:0;transition:opacity 0.3s ease;pointer-events:none}</style>
+                
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/css/build/tailwind.css">
+    
+
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fonts/GeistMono/geist-mono.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fonts/Geist/geist.css">
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"xiaobotester.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"simple","highlight_theme":{"light":"github","dark":"github-dark"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#2563EB","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":null,"description":"xiaobotester 的技术博客，分享测试、AI与科技领域的见解"},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"xiaobotester's Blog","subtitle":{"text":["探索技术前沿，分享测试心得","AI · 科技 · 软件测试 · 行业洞察"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":[{"icon":"fa-brands fa-github","url":"https://github.com/xiaobotester"},{"icon":"fa-solid fa-at","url":"your-email@example.com"},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#2563EB","right":"#7C3AED","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"About":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"欢迎访问我的博客！这里分享 AI、科技与测试领域的最新资讯和技术文章。","show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2026/06/09 00:00:00","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2026/06/09 00:00:00","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/brands.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/solid.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/regular.min.css">
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+	<span class="scroll-progress-bar"></span>
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                xiaobotester&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories"
+                                        >
+                                    <i class="fa-regular fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">74</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">42</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			
+			
+			<img src="/AI%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/images/20260625-industry-daily-cover.png" alt="2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75" />
+			
+			<div class="w-full flex items-center absolute bottom-0 justify-start">
+				<h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="https://avatars.githubusercontent.com/xiaobotester">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">xiaobotester</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-06-25 08:00</span>
+        <span class="mobile">2026-06-25 08:00</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-06-25 09:38:55</span>
+            <span class="mobile">2026-06-25 09:38:55</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/AI%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/">AI行业日报</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%A4%8F%E5%AD%A3%E8%BE%BE%E6%B2%83%E6%96%AF/">夏季达沃斯</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%8D%81%E5%A4%A7%E6%96%B0%E5%85%B4%E6%8A%80%E6%9C%AF/">十大新兴技术</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%A4%AE%E8%A1%8CMLF/">央行MLF</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B/">AI大模型</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E8%A7%84%E6%A8%A1%E5%8C%96%E5%88%9B%E6%96%B0/">规模化创新</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿"><a href="#2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿" class="headerlink" title="2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿"></a>2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/AI%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/images/20260625-industry-daily-cover.png"
+                      alt="封面图"
+                ></p>
+<blockquote>
+<p><strong>摘要</strong>: 今日焦点：夏季达沃斯论坛在大连开幕，发布2026年十大新兴技术报告；央行宣布明日投放5000亿元MLF，净加量2000亿；2026年上半年AI大模型发布清单曝光，中国企业占据绝对多数。</p>
+</blockquote>
+<h2 id="一、软件测试与质量保障"><a href="#一、软件测试与质量保障" class="headerlink" title="一、软件测试与质量保障"></a>一、软件测试与质量保障</h2><h3 id="行业动态"><a href="#行业动态" class="headerlink" title="行业动态"></a>行业动态</h3><p>目前6月24-25日暂未发现软件测试领域的重大工具更新或漏洞通报。近期测试工具迭代集中在Playwright 1.60、SeleniumConf 2026、JMeter 6.0等，详见往期日报。</p>
+<p><strong>参考来源</strong>: <a class="link"   target="_blank" rel="noopener" href="https://devpress.csdn.net/v1/article/detail/161726706" >测试深度洞察 ｜ 2026年6月：测试工具迭代背后的行业信号<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="技术趋势"><a href="#技术趋势" class="headerlink" title="技术趋势"></a>技术趋势</h3><p>2026年软件测试呈现三大趋势：智能化（AI辅助测试用例生成）、平台化（一站式质量管理平台）、低代码化（无代码&#x2F;少代码测试工具普及）。测试工程师角色从60%手工测试转向策略设计和AI工具管理。</p>
+<p><strong>参考来源</strong>: <a class="link"   target="_blank" rel="noopener" href="https://developer.baidu.com/article/detail.html?id=7041066" >2026年软件测试技术趋势：全场景覆盖与智能化突破<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h2 id="二、AI与模型厂商"><a href="#二、AI与模型厂商" class="headerlink" title="二、AI与模型厂商"></a>二、AI与模型厂商</h2><h3 id="2026年上半年AI大模型全景回顾"><a href="#2026年上半年AI大模型全景回顾" class="headerlink" title="2026年上半年AI大模型全景回顾"></a>2026年上半年AI大模型全景回顾</h3><p>6月24日，威易网发布《2026年上半年AI大模型全景回顾》，梳理了截至6月的38+款重要模型发布清单，揭示了AI技术的四大趋势：</p>
+<h4 id="中国力量全面崛起"><a href="#中国力量全面崛起" class="headerlink" title="中国力量全面崛起"></a>中国力量全面崛起</h4><p>来自中国公司的发布条目占据绝对多数，包括百度（文心5.0&#x2F;5.1）、阿里（Qwen3.5&#x2F;3.6-Plus）、字节跳动（Doubao-Seed系列&#x2F;Seedance）、腾讯（混元Hy3）、小米（MiMo系列）、蚂蚁集团（Ling 2.6&#x2F;百灵Ring）、商汤（日日新SenseNova）、智谱AI（GLM-5&#x2F;5.1&#x2F;5.2）、科大讯飞（星火X2）、月之暗面（Kimi K2.5&#x2F;K2.6&#x2F;K2.7-Code）、昆仑万维（Matrix-Game&#x2F;SkyReels&#x2F;Mureka）、快手（可灵视频）、MiniMax（M2.5&#x2F;M2.7&#x2F;M3）、DeepSeek（V4系列）等。国产大模型已从”追赶”走向”并跑”乃至局部”领跑”。</p>
+<h4 id="多模态成为主战场"><a href="#多模态成为主战场" class="headerlink" title="多模态成为主战场"></a>多模态成为主战场</h4><p>从文本到图像、视频、音频、代码，单一文本模型已难以满足市场需求。字节跳动6月23日以”五连发”（Seed 2.1 Pro、Seed-2.1-turbo、Seedance 2.5、Seedream 5.0 Pro、Seed-Audio 1.0）覆盖语言、视频、图像、音频全域，宣告构建多模态生态闭环的强烈意志。</p>
+<h4 id="迭代周期急剧压缩"><a href="#迭代周期急剧压缩" class="headerlink" title="迭代周期急剧压缩"></a>迭代周期急剧压缩</h4><p>Anthropic上半年完成四轮重要发布（Opus 4.6→4.8→Fable 5&#x2F;Mythos 5），OpenAI从GPT-5.4到GPT-5.5再到GPT-5.5 Instant持续演进。模型的技术窗口期已被压缩至以周计，快速迭代能力本身正在成为核心竞争力。</p>
+<h4 id="垂直专业化趋势明显"><a href="#垂直专业化趋势明显" class="headerlink" title="垂直专业化趋势明显"></a>垂直专业化趋势明显</h4><p>代码（Kimi-K2.7-Code）、视频（Seedance 2.5&#x2F;可灵3.0）、音频（Seed-Audio 1.0）、游戏（Matrix-Game 3.0）——越来越多的模型开始聚焦特定领域，而非追求全能型产品。</p>
+<p><strong>参考来源</strong>: <a class="link"   target="_blank" rel="noopener" href="https://www.weste.net/2026/06-24/2026-1-6-AI-Model.html" >2026年上半年AI大模型全景回顾：浪潮之上，智能重塑<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h2 id="三、科技行业"><a href="#三、科技行业" class="headerlink" title="三、科技行业"></a>三、科技行业</h2><h3 id="夏季达沃斯论坛在大连开幕"><a href="#夏季达沃斯论坛在大连开幕" class="headerlink" title="夏季达沃斯论坛在大连开幕"></a>夏季达沃斯论坛在大连开幕</h3><p>6月24日，2026年夏季达沃斯论坛（世界经济论坛第十七届新领军者年会）在辽宁大连开幕，主题为”规模化创新”。国务院总理李强出席开幕式并致辞，来自90余个国家和地区的约1800位政商领袖参会。</p>
+<h4 id="十大新兴技术发布"><a href="#十大新兴技术发布" class="headerlink" title="十大新兴技术发布"></a>十大新兴技术发布</h4><p>论坛发布《2026年十大新兴技术报告》，未来三至五年内有望重塑经济与社会格局的突破性技术包括：</p>
+<ol>
+<li><strong>万物互联电网</strong> - 实现能源互联网的智能调度</li>
+<li><strong>直接提锂技术</strong> - 突破资源限制，降低新能源成本</li>
+<li><strong>被动辐射冷却材料</strong> - 无需能耗的建筑降温方案</li>
+<li>量子模拟药物发现</li>
+<li>其他未详述技术（报告全文待补充）</li>
+</ol>
+<p>技术重心从软件优化的AI转向物理系统，多项技术打破资源、地域限制。</p>
+<h4 id="核心观点"><a href="#核心观点" class="headerlink" title="核心观点"></a>核心观点</h4><ul>
+<li><strong>中国创新从”点状突破”迈向”规模化创新”</strong>: 德勤中国CEO刘明华指出，中国完备的产业生态和丰富应用场景，使前沿技术快速转化为现实生产力</li>
+<li><strong>AI落地需要”修路+加油+交通规则”</strong>: 清华大学薛澜比喻，既要数据中心等硬件建设，也要监管规则等软件配套</li>
+<li><strong>中国优势不仅是产能，更是跨行业技术适配和商业化的”中国速度”</strong>: 夏季达沃斯全球灯塔工厂新名单中，中国案例占比过半</li>
+</ul>
+<h4 id="热门议题"><a href="#热门议题" class="headerlink" title="热门议题"></a>热门议题</h4><p>“人工智能”、”机器人”、”绿色能源”成为论坛高频词。分论坛”AI无处不在，却非一蹴而就”座无虚席，嘉宾围绕技术落地、经济效益、国际合作展开讨论。</p>
+<p><strong>参考来源</strong>:</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.news.cn/fortune/20260624/4160d3f3137d4cd68a2cf7cb260b8bbd/c.html" >2026夏季达沃斯论坛观察-新华网<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.msn.cn/zh-cn/news/other/%E5%A4%8F%E5%AD%A3%E8%BE%BE%E6%B2%83%E6%96%AF%E8%AE%BA%E5%9D%9B%E5%8F%91%E5%B8%832026%E5%B9%B4%E5%8D%81%E5%A4%A7%E6%96%B0%E5%85%B4%E6%8A%80%E6%9C%AF/ar-AA26paZ5" >夏季达沃斯论坛发布2026年十大新兴技术<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.chinanews.com.cn/cj/2026/06-24/10646500.shtml" >2026年夏季达沃斯论坛在辽宁大连启幕<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+</ul>
+<h2 id="四、IT职场"><a href="#四、IT职场" class="headerlink" title="四、IT职场"></a>四、IT职场</h2><h3 id="2026年全球科技业裁员已超10万人"><a href="#2026年全球科技业裁员已超10万人" class="headerlink" title="2026年全球科技业裁员已超10万人"></a>2026年全球科技业裁员已超10万人</h3><p>截至5月底，2026年全球科技行业裁员人数突破10万大关，且趋势未减。裁员并非单纯”寒冬”，而是AI引发的结构性”大换血”：</p>
+<ul>
+<li><strong>企业战略转型AI</strong>: 阿里、腾讯、网易等大厂加码AI研发，传统岗位缩减</li>
+<li><strong>初级岗位招聘冻结</strong>: Anthropic 2026年3月报告显示，22-25岁应届毕业生入职率暴跌</li>
+<li><strong>“裁庸招优”本质</strong>: 资本向AI倾斜，高薪基础岗位（如初级程序员、美术）面临AI替代风险，效率提升可达300%</li>
+</ul>
+<p><strong>参考来源</strong>:</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.163.com/dy/article/KTJ1CCID0511BLFD.html" >2026年科技业裁员已超10万人 企业加码押注AI引发新一轮震荡<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://blog.oool.cc/archives/ai-labor-market-impact-anthropic-report-2026" >深度调查：高薪者先被淘汰？AI对2026劳动力市场的影响<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+</ul>
+<h3 id="AI时代测试工程师转型方向"><a href="#AI时代测试工程师转型方向" class="headerlink" title="AI时代测试工程师转型方向"></a>AI时代测试工程师转型方向</h3><ul>
+<li>从手工测试转向AI工具管理和策略设计</li>
+<li>学习测试自动化框架（Playwright、Selenium）</li>
+<li>掌握AI辅助测试用例生成和质量数据分析</li>
+<li>向质量教练、测试架构师转型</li>
+</ul>
+<p><strong>参考来源</strong>: <a class="link"   target="_blank" rel="noopener" href="https://codechina.net/article/weixin_30802819/73123" >2026年测试技术全景：自动化与AI的实践升级<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h2 id="五、金融领域"><a href="#五、金融领域" class="headerlink" title="五、金融领域"></a>五、金融领域</h2><h3 id="央行明日投放5000亿元MLF，净加量2000亿"><a href="#央行明日投放5000亿元MLF，净加量2000亿" class="headerlink" title="央行明日投放5000亿元MLF，净加量2000亿"></a>央行明日投放5000亿元MLF，净加量2000亿</h3><p>6月24日晚，央行突然公告：6月25日将开展5000亿元、期限1年的MLF（中期借贷便利，市场昵称为”麻辣粉”）操作。</p>
+<h4 id="核心数据"><a href="#核心数据" class="headerlink" title="核心数据"></a>核心数据</h4><ul>
+<li><strong>到期量</strong>: 3000亿元（此前投放的1年期MLF到期）</li>
+<li><strong>本次投放</strong>: 5000亿元</li>
+<li><strong>净投放</strong>: +2000亿元（加量续作）</li>
+</ul>
+<h4 id="操作节奏对比"><a href="#操作节奏对比" class="headerlink" title="操作节奏对比"></a>操作节奏对比</h4><ul>
+<li>4月：净回笼2000亿（缩量续作）</li>
+<li>5月：净投放1000亿（加量续作）</li>
+<li>6月：净投放2000亿（加量翻倍）</li>
+</ul>
+<p>从”缩量”到”少量加”再到”明显加量”，央行的水龙头开合方向清晰——不是突然放水，而是有步骤地把中期流动性垫厚。</p>
+<h4 id="为什么选在现在？三大背景"><a href="#为什么选在现在？三大背景" class="headerlink" title="为什么选在现在？三大背景"></a>为什么选在现在？三大背景</h4><ol>
+<li><p><strong>LPR连续13个月不变，市场等”那一次”降息</strong></p>
+<ul>
+<li>6月22日最新LPR：1年期3.0%，5年期以上3.5%</li>
+<li>MLF利率不动，LPR也难动，但加量MLF为下半年降息预留空间</li>
+<li>如同”提前把水库蓄满，再考虑要不要放闸”</li>
+</ul>
+</li>
+<li><p><strong>6月底是资金敏感期</strong></p>
+<ul>
+<li>季末监管考核、政府债密集发行、企业税款结算叠加</li>
+<li>MLF是1年期的”稳定资金底座”，不是几天的”救急钱”</li>
+</ul>
+</li>
+<li><p><strong>财政端发力，需要货币端配合</strong></p>
+<ul>
+<li>2026年财政前置，国债、专项债集中发行</li>
+<li>MLF加量直接提高银行中期资金储备，帮助消化政府债</li>
+</ul>
+</li>
+</ol>
+<h4 id="对你的影响"><a href="#对你的影响" class="headerlink" title="对你的影响"></a>对你的影响</h4><table>
+<thead>
+<tr>
+<th>群体</th>
+<th>影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>房贷族</td>
+<td>短期月供不变，但下半年若降息，明年1月重定价时月供有望下行</td>
+</tr>
+<tr>
+<td>储户</td>
+<td>高利率存款、特惠理财产品空间越来越有限，利息下行趋势仍在路上</td>
+</tr>
+<tr>
+<td>股民</td>
+<td>MLF加量属”托底信号”，维持流动性信心，但非”点燃行情”的刺激</td>
+</tr>
+</tbody></table>
+<p><strong>参考来源</strong>: <a class="link"   target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1868909943283113531" >央行明天放麻辣粉5000亿：降息信号来了？<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h2 id="今日速览"><a href="#今日速览" class="headerlink" title="今日速览"></a>今日速览</h2><table>
+<thead>
+<tr>
+<th>领域</th>
+<th>重点事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AI模型</td>
+<td>2026上半年AI大模型全景回顾：38+款模型发布，中国力量占绝对多数</td>
+</tr>
+<tr>
+<td>夏季达沃斯</td>
+<td>在大连开幕，发布十大新兴技术（万物互联电网、直接提锂等）</td>
+</tr>
+<tr>
+<td>科技</td>
+<td>中国创新从”点状突破”迈向”规模化创新”，灯塔工厂中国案例过半</td>
+</tr>
+<tr>
+<td>IT职场</td>
+<td>2026全球科技业裁员超10万人，AI引发结构性”大换血”</td>
+</tr>
+<tr>
+<td>金融</td>
+<td>央行明日投放5000亿MLF，净加量2000亿，为降息预留空间</td>
+</tr>
+</tbody></table>
+<h2 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h2><ol>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.weste.net/2026/06-24/2026-1-6-AI-Model.html" >2026年上半年AI大模型全景回顾：浪潮之上，智能重塑<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.news.cn/fortune/20260624/4160d3f3137d4cd68a2cf7cb260b8bbd/c.html" >2026夏季达沃斯论坛观察-新华网<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.msn.cn/zh-cn/news/other/%E5%A4%8F%E5%AD%A3%E8%BE%BE%E6%B2%83%E6%96%AF%E8%AE%BA%E5%9D%9B%E5%8F%91%E5%B8%832026%E5%B9%B4%E5%8D%81%E5%A4%A7%E6%96%B0%E5%85%B4%E6%8A%80%E6%9C%AF/ar-AA26paZ5" >夏季达沃斯论坛发布2026年十大新兴技术<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.chinanews.com.cn/cj/2026/06-24/10646500.shtml" >2026年夏季达沃斯论坛在辽宁大连启幕<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.163.com/dy/article/KTJ1CCID0511BLFD.html" >2026年科技业裁员已超10万人 企业加码押注AI引发新一轮震荡<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1868909943283113531" >央行明天放麻辣粉5000亿：降息信号来了？<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://devpress.csdn.net/v1/article/detail/161726706" >测试深度洞察 ｜ 2026年6月：测试工具迭代背后的行业信号<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+</ol>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿</li>
+        <li><strong>作者:</strong> xiaobotester</li>
+        <li><strong>创建于
+                :</strong> 2026-06-25 08:00:00</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2026-06-25 09:38:55
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://xiaobotester.github.io/2026/06/25/2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%A4%8F%E5%AD%A3%E8%BE%BE%E6%B2%83%E6%96%AF/">#夏季达沃斯</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%8D%81%E5%A4%A7%E6%96%B0%E5%85%B4%E6%8A%80%E6%9C%AF/">#十大新兴技术</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%A4%AE%E8%A1%8CMLF/">#央行MLF</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B/">#AI大模型</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E8%A7%84%E6%A8%A1%E5%8C%96%E5%88%9B%E6%96%B0/">#规模化创新</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2026/06/24/2026%E5%B9%B46%E6%9C%8824%E6%97%A5-%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5-GPT-5.6%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%E7%87%A7%E5%8E%9F%E7%A7%91%E6%8A%80IPO%E8%BF%87%E4%BC%9A/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">2026年6月24日-行业日报-GPT-5.6正式发布燧原科技IPO过会</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2026%E5%B9%B46%E6%9C%8825%E6%97%A5-%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5-%E5%A4%8F%E5%AD%A3%E8%BE%BE%E6%B2%83%E6%96%AF%E5%8F%91%E5%B8%83%E5%8D%81%E5%A4%A7%E6%96%B0%E5%85%B4%E6%8A%80%E6%9C%AF%E5%A4%AE%E8%A1%8CMLF%E5%8A%A0%E9%87%8F2000%E4%BA%BF"><span class="nav-text">2026年6月25日-行业日报-夏季达沃斯发布十大新兴技术央行MLF加量2000亿</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E4%B8%8E%E8%B4%A8%E9%87%8F%E4%BF%9D%E9%9A%9C"><span class="nav-text">一、软件测试与质量保障</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E4%B8%9A%E5%8A%A8%E6%80%81"><span class="nav-text">行业动态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E8%B6%8B%E5%8A%BF"><span class="nav-text">技术趋势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81AI%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%8E%82%E5%95%86"><span class="nav-text">二、AI与模型厂商</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2026%E5%B9%B4%E4%B8%8A%E5%8D%8A%E5%B9%B4AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A8%E6%99%AF%E5%9B%9E%E9%A1%BE"><span class="nav-text">2026年上半年AI大模型全景回顾</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%A7%91%E6%8A%80%E8%A1%8C%E4%B8%9A"><span class="nav-text">三、科技行业</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8F%E5%AD%A3%E8%BE%BE%E6%B2%83%E6%96%AF%E8%AE%BA%E5%9D%9B%E5%9C%A8%E5%A4%A7%E8%BF%9E%E5%BC%80%E5%B9%95"><span class="nav-text">夏季达沃斯论坛在大连开幕</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81IT%E8%81%8C%E5%9C%BA"><span class="nav-text">四、IT职场</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2026%E5%B9%B4%E5%85%A8%E7%90%83%E7%A7%91%E6%8A%80%E4%B8%9A%E8%A3%81%E5%91%98%E5%B7%B2%E8%B6%8510%E4%B8%87%E4%BA%BA"><span class="nav-text">2026年全球科技业裁员已超10万人</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AI%E6%97%B6%E4%BB%A3%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%BD%AC%E5%9E%8B%E6%96%B9%E5%90%91"><span class="nav-text">AI时代测试工程师转型方向</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%87%91%E8%9E%8D%E9%A2%86%E5%9F%9F"><span class="nav-text">五、金融领域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%AE%E8%A1%8C%E6%98%8E%E6%97%A5%E6%8A%95%E6%94%BE5000%E4%BA%BF%E5%85%83MLF%EF%BC%8C%E5%87%80%E5%8A%A0%E9%87%8F2000%E4%BA%BF"><span class="nav-text">央行明日投放5000亿元MLF，净加量2000亿</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8A%E6%97%A5%E9%80%9F%E8%A7%88"><span class="nav-text">今日速览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%9D%A5%E6%BA%90"><span class="nav-text">参考来源</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2026</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">xiaobotester</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 42 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+            
+                
+        
+                
+        
+                
+
+                    
+                        <script data-swup-reload-script>document.addEventListener("DOMContentLoaded",function(){var siteUrl="https://xiaobotester.github.io";function fullUrl(src){if(!src)return"";if(src.startsWith("http"))return src;if(src.startsWith("//"))return"https:"+src;return siteUrl+(src.startsWith("/")?src:"/"+src)}function htmlToMd(el){var md="";el.childNodes.forEach(function(node){if(node.nodeType===3){md+=node.textContent;return}if(node.nodeType!==1)return;var tag=node.tagName.toLowerCase();if(tag==="h1")md+="\n# "+node.textContent.trim()+"\n\n";else if(tag==="h2")md+="\n## "+node.textContent.trim()+"\n\n";else if(tag==="h3")md+="\n### "+node.textContent.trim()+"\n\n";else if(tag==="h4")md+="\n#### "+node.textContent.trim()+"\n\n";else if(tag==="h5")md+="\n##### "+node.textContent.trim()+"\n\n";else if(tag==="h6")md+="\n###### "+node.textContent.trim()+"\n\n";else if(tag==="p")md+=inlineToMd(node)+"\n\n";else if(tag==="blockquote"){var lines=htmlToMd(node).trim().split("\n");md+="\n"+lines.map(function(l){return"> "+l}).join("\n")+"\n\n"}else if(tag==="pre"){var code=node.querySelector("code");var text=code?code.textContent:node.textContent;md+="\n```\n"+text.trim()+"\n```\n\n"}else if(tag==="ul"||tag==="ol"){var items=node.querySelectorAll(":scope > li");items.forEach(function(li,i){var prefix=tag==="ol"?(i+1)+". ":"- ";md+=prefix+inlineToMd(li).trim()+"\n"});md+="\n"}else if(tag==="table"){var rows=node.querySelectorAll("tr");rows.forEach(function(row,ri){var cells=row.querySelectorAll("th,td");var line="| "+Array.from(cells).map(function(c){return c.textContent.trim()}).join(" | ")+" |";md+=line+"\n";if(ri===0){md+="| "+Array.from(cells).map(function(){return"---"}).join(" | ")+" |\n"}});md+="\n"}else if(tag==="hr")md+="\n---\n\n";else if(tag==="br")md+="\n";else if(tag==="img"){var alt=node.getAttribute("alt")||"";var src=fullUrl(node.getAttribute("data-src")||node.getAttribute("src")||"");md+="!["+alt+"]("+src+")\n\n"}else md+=htmlToMd(node)});return md}function inlineToMd(el){var result="";el.childNodes.forEach(function(node){if(node.nodeType===3){result+=node.textContent;return}if(node.nodeType!==1)return;var tag=node.tagName.toLowerCase();if(tag==="strong"||tag==="b")result+="**"+node.textContent+"**";else if(tag==="em"||tag==="i")result+="*"+node.textContent+"*";else if(tag==="code")result+="`"+node.textContent+"`";else if(tag==="a"){var href=node.getAttribute("href")||"";if(!href.startsWith("http"))href=fullUrl(href);result+="["+node.textContent+"]("+href+")"}else if(tag==="del"||tag==="s")result+="~~"+node.textContent+"~~";else if(tag==="img"){var alt=node.getAttribute("alt")||"";var src=fullUrl(node.getAttribute("data-src")||node.getAttribute("src")||"");result+="!["+alt+"]("+src+")"}else if(tag==="br")result+="\n";else result+=node.textContent});return result}function copyRichText(articleContent,toast){var clone=articleContent.cloneNode(true);clone.style.cssText="position:fixed;left:-9999px;top:0;background:#fff;color:#333;padding:20px;font-size:16px;line-height:1.8";clone.querySelectorAll("img").forEach(function(img){var realSrc=img.getAttribute("data-src")||img.getAttribute("src")||"";img.setAttribute("src",fullUrl(realSrc));img.removeAttribute("data-src");img.removeAttribute("loading");img.removeAttribute("class");img.style.cssText="max-width:100%;height:auto;display:block;margin:16px auto"});clone.querySelectorAll("*").forEach(function(el){var tag=el.tagName.toLowerCase();if(tag==="img")return;if(tag==="pre"){el.style.cssText="background:#f6f8fa;color:#24292e;border:1px solid #e1e4e8;border-radius:6px;padding:16px;font-size:14px;line-height:1.6;overflow:auto;margin:16px 0"}else if(tag==="code"&&!el.closest("pre")){el.style.cssText="background:#f6f8fa;color:#d63384;padding:2px 6px;border-radius:3px;font-size:14px"}else if(tag==="code"&&el.closest("pre")){el.style.cssText="background:transparent;color:#24292e;font-size:14px"}else if(tag==="blockquote"){el.style.cssText="background:#f0f7ff;border-left:4px solid #2563EB;padding:12px 16px;color:#555;margin:16px 0"}else if(tag==="h1"){el.style.cssText="color:#1a1a1a;font-size:24px;font-weight:bold;margin:24px 0 12px"}else if(tag==="h2"){el.style.cssText="color:#1a1a1a;font-size:20px;font-weight:bold;margin:20px 0 10px"}else if(tag==="h3"){el.style.cssText="color:#1a1a1a;font-size:18px;font-weight:bold;margin:16px 0 8px"}else if(tag.match(/^h[4-6]$/)){el.style.cssText="color:#1a1a1a;font-size:16px;font-weight:bold;margin:12px 0 6px"}else if(tag==="a"){el.style.color="#2563EB"}else if(tag==="p"){el.style.cssText="color:#333;margin:8px 0;line-height:1.8"}else if(tag==="li"){el.style.cssText="color:#333;line-height:1.8"}else if(tag==="ul"||tag==="ol"){el.style.cssText="color:#333;padding-left:20px;margin:8px 0"}else if(tag==="strong"||tag==="b"){el.style.color="#1a1a1a"}else if(tag==="table"){el.style.cssText="border-collapse:collapse;width:100%;margin:16px 0;border:1px solid #e1e4e8;table-layout:fixed;word-break:break-all"}else if(tag==="thead"){el.style.cssText="background:#f6f8fa"}else if(tag==="tbody"){el.style.cssText="background:#fff"}else if(tag==="tr"){el.style.cssText="border-bottom:1px solid #e1e4e8"}else if(tag==="th"){el.style.cssText="background:#f6f8fa;color:#1a1a1a;border:1px solid #e1e4e8;padding:10px 14px;font-weight:bold;font-size:14px;text-align:left;word-break:break-all"}else if(tag==="td"){el.style.cssText="color:#333;border:1px solid #e1e4e8;padding:10px 14px;font-size:14px;text-align:left;word-break:break-all"}else{el.style.color="#333"}});document.body.appendChild(clone);var range=document.createRange();range.selectNodeContents(clone);var selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);try{document.execCommand("copy");toast.textContent="已复制富文本！可粘贴到公众号";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)}catch(e){toast.textContent="复制失败";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)}selection.removeAllRanges();document.body.removeChild(clone)}function initCopyBtns(){var articleContent=document.querySelector(".article-content");if(!articleContent)return;document.querySelectorAll(".copy-article-btn,.copy-md-btn").forEach(function(b){b.remove()});var toast=document.querySelector(".copy-toast");if(!toast){toast=document.createElement("div");toast.className="copy-toast";document.body.appendChild(toast)}var btnRich=document.createElement("button");btnRich.className="copy-article-btn";btnRich.innerHTML="<i class=\"fa-regular fa-copy\"></i> 复制全文";btnRich.addEventListener("click",function(){copyRichText(articleContent,toast)});document.body.appendChild(btnRich);var btnMd=document.createElement("button");btnMd.className="copy-md-btn";btnMd.innerHTML="<i class=\"fa-regular fa-file-code\"></i> 复制MD";btnMd.addEventListener("click",function(){var mdText=htmlToMd(articleContent).replace(/\n{3,}/g,"\n\n").trim();navigator.clipboard.writeText(mdText).then(function(){toast.textContent="已复制Markdown！";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)}).catch(function(){var ta=document.createElement("textarea");ta.value=mdText;ta.style.cssText="position:fixed;left:-9999px";document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);toast.textContent="已复制Markdown！";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)})});document.body.appendChild(btnMd)}initCopyBtns();if(document.querySelector("[data-swup]")){document.addEventListener("swup:contentReplaced",initCopyBtns)}});</script>
+                    
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/Swup.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupSlideTheme.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupScriptsPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupProgressPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupScrollPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupPreloadPlugin.min.js" ></script>
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	<script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/main.js" ></script>
+
+
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/odometer.min.js" ></script>
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+  <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/Typed.min.js" ></script>
+
+
+
+
+
+
+
+
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/moment-with-locales.min.js" data-swup-reload-script></script>
+
+
+	
+</body>
+
+</html>
