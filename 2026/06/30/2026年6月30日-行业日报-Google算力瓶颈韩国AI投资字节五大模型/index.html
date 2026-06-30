@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="技术,博客,编程,生活">
+    
+    
+    <meta name="author" content="xiaobotester">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+        
+        
+        
+            <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
+        
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://xiaobotester.github.io/2026/06/30/2026年6月30日-行业日报-google算力瓶颈韩国ai投资字节五大模型/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="xiaobotester 的技术博客，分享测试、AI与科技领域的见解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型">
+<meta property="og:url" content="https://xiaobotester.github.io/2026/06/30/2026%E5%B9%B46%E6%9C%8830%E6%97%A5-%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5-Google%E7%AE%97%E5%8A%9B%E7%93%B6%E9%A2%88%E9%9F%A9%E5%9B%BDAI%E6%8A%95%E8%B5%84%E5%AD%97%E8%8A%82%E4%BA%94%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+<meta property="og:site_name" content="xiaobotester&#39;s Blog">
+<meta property="og:description" content="xiaobotester 的技术博客，分享测试、AI与科技领域的见解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiaobotester.github.io/AI%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/images/20260630-industry-daily-cover.png">
+<meta property="article:published_time" content="2026-06-30T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-30T02:00:45.033Z">
+<meta property="article:author" content="xiaobotester">
+<meta property="article:tag" content="Google算力">
+<meta property="article:tag" content="Momenta IPO">
+<meta property="article:tag" content="字节大模型">
+<meta property="article:tag" content="小米NAS">
+<meta property="article:tag" content="韩国AI投资">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiaobotester.github.io/AI%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/images/20260630-industry-daily-cover.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/img/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.ico">
+    <meta name="theme-color" content="#2563EB">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型 | xiaobotester&#39;s Blog
+        
+    </title>
+
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fonts/Chillax/chillax.css">
+
+    <!--- Inject Part-->
+    
+        
+            
+    
+            
+    
+            
+                
+                    <link rel="stylesheet" href="/css/custom.css">
+                
+    
+            
+                
+                    <script data-swup-reload-script>localStorage.setItem("hexo-theme-redefine-dark-mode","false");document.documentElement.setAttribute("data-theme","light");</script>
+                
+    
+            
+                
+                    <style>.article-content pre{background:#f6f8fa!important;border:1px solid #e1e4e8;border-radius:6px;padding:16px}.article-content pre code{background:transparent!important;color:#24292e}.article-content blockquote{background:rgba(37,99,235,0.06);border-left:4px solid #2563EB;padding:12px 16px;border-radius:0 6px 6px 0}.article-content table{border-collapse:collapse;width:100%}.article-content table th,.article-content table td{border:1px solid #e1e4e8;padding:8px 12px}.article-content table th{background:#f6f8fa}.copy-article-btn,.copy-md-btn{position:fixed;right:20px;z-index:9999;color:#fff;border:none;border-radius:50px;padding:12px 20px;font-size:14px;cursor:pointer;transition:all 0.3s ease;display:flex;align-items:center;gap:6px}.copy-article-btn{bottom:160px;background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 4px 15px rgba(16,185,129,0.3)}.copy-article-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(16,185,129,0.4)}.copy-md-btn{bottom:100px;background:linear-gradient(135deg,#2563EB,#7C3AED);box-shadow:0 4px 15px rgba(37,99,235,0.3)}.copy-md-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.4)}.copy-article-btn i,.copy-md-btn i{font-size:16px}.copy-toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;z-index:99999;opacity:0;transition:opacity 0.3s ease;pointer-events:none}</style>
+                
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/css/build/tailwind.css">
+    
+
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fonts/GeistMono/geist-mono.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fonts/Geist/geist.css">
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"xiaobotester.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"simple","highlight_theme":{"light":"github","dark":"github-dark"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#2563EB","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":null,"description":"xiaobotester 的技术博客，分享测试、AI与科技领域的见解"},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"xiaobotester's Blog","subtitle":{"text":["探索技术前沿，分享测试心得","AI · 科技 · 软件测试 · 行业洞察"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":[{"icon":"fa-brands fa-github","url":"https://github.com/xiaobotester"},{"icon":"fa-solid fa-at","url":"your-email@example.com"},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#2563EB","right":"#7C3AED","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"About":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"欢迎访问我的博客！这里分享 AI、科技与测试领域的最新资讯和技术文章。","show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2026/06/09 00:00:00","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2026/06/09 00:00:00","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/brands.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/solid.min.css">
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/fontawesome/regular.min.css">
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+	<span class="scroll-progress-bar"></span>
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                xiaobotester&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories"
+                                        >
+                                    <i class="fa-regular fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">101</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">48</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			
+			
+			<img src="/AI%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/images/20260630-industry-daily-cover.png" alt="2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75" />
+			
+			<div class="w-full flex items-center absolute bottom-0 justify-start">
+				<h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="https://avatars.githubusercontent.com/xiaobotester">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">xiaobotester</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-06-30 08:00</span>
+        <span class="mobile">2026-06-30 08:00</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-06-30 10:45</span>
+            <span class="mobile">2026-06-30 10:45</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/AI%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/">AI行业日报</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Google%E7%AE%97%E5%8A%9B/">Google算力</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E9%9F%A9%E5%9B%BDAI%E6%8A%95%E8%B5%84/">韩国AI投资</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%AD%97%E8%8A%82%E5%A4%A7%E6%A8%A1%E5%9E%8B/">字节大模型</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Momenta-IPO/">Momenta IPO</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%B0%8F%E7%B1%B3NAS/">小米NAS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型"><a href="#2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型" class="headerlink" title="2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型"></a>2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/AI%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5/images/20260630-industry-daily-cover.png"
+                      alt="行业日报封面"
+                ></p>
+<p><strong>今日焦点</strong>：谷歌因算力紧张限制Meta使用Gemini；韩国政府宣布550万亿韩元AI数据中心投资计划；字节跳动五大模型集体亮相；Momenta以”物理AI第一股”启动港股招股；我国发布首个智能体互联系列国家标准。</p>
+<hr>
+<h2 id="一、软件测试与质量保障"><a href="#一、软件测试与质量保障" class="headerlink" title="一、软件测试与质量保障"></a>一、软件测试与质量保障</h2><p><strong>高通传出拟百亿收购Tenstorrent：瞄准AI芯片与数据中心</strong><br>高通正与AI芯片初创公司Tenstorrent展开谈判，收购金额可能在80-100亿美元区间。Tenstorrent由芯片工程师Jim Keller掌舵，采用开源RISC-V架构。高通此前已宣布近40亿美元收购AI软件企业Modular，持续加码数据中心AI芯片赛道。<br>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.ithome.com/0/967/330.htm" >IT之家<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<hr>
+<h2 id="二、AI与模型厂商"><a href="#二、AI与模型厂商" class="headerlink" title="二、AI与模型厂商"></a>二、AI与模型厂商</h2><p><strong>谷歌因算力紧张限制Meta使用Gemini模型，云部门积压订单翻番</strong><br>据《金融镜报》报道，谷歌因Meta寻求的计算能力超出供给，已对Meta使用Gemini模型的权限施加限制，其他客户也受到较轻影响。谷歌云CEO皮查伊表示算力限制阻碍了更高增长，积压订单环比翻番。Meta鼓励员工更高效使用AI词元。<br>来源：<a class="link"   target="_blank" rel="noopener" href="https://news.softunis.com/62744.html" >环球网<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><strong>字节跳动五大模型集中亮相，豆包专业版上线</strong><br>火山引擎Force大会上，豆包大模型2.1 Pro、视频生成模型Seedance 2.5、Seedance 2.0 4K版、图像创作模型Seedream 5.0 Pro、音频生成模型1.0集体亮相。豆包专业版上线三级阶梯定价方案，日均tokens调用量达180万亿。<br>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.ithome.com/0/967/330.htm" >IT之家<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><strong>马斯克：Grok 4.5已在SpaceX和特斯拉内测，每月发布新模型</strong><br>马斯克宣布最新一代大语言模型Grok 4.5已在SpaceX和特斯拉内部开启Beta测试。SpaceX计划今年剩余时间每月发布一个”完全从零训练”的新模型，加剧与OpenAI、Anthropic、谷歌的竞争。<br>来源：<a class="link"   target="_blank" rel="noopener" href="https://news.softunis.com/62744.html" >21世纪经济报道<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<hr>
+<h2 id="三、科技行业"><a href="#三、科技行业" class="headerlink" title="三、科技行业"></a>三、科技行业</h2><p><strong>韩国宣布550万亿韩元AI数据中心投资计划，三星SK海力士承诺800万亿韩元扩产</strong><br>韩国政府6月29日宣布，计划吸引约550万亿韩元建设AI数据中心，力争到2035年建成18.4GW容量，累计投资需求超1000万亿韩元。三星和SK集团各建两座芯片工厂，合计800万亿韩元扩产。韩国KOSDAQ一度大涨8%，A股科创50涨超4%。<br>来源：<a class="link"   target="_blank" rel="noopener" href="https://finance.sina.com.cn/jjxw/2026-06-29/doc-inifacku5442671.shtml" >东方财富网<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><strong>我国首个智能体互联系列国家标准正式发布</strong><br>市场监管总局批准发布《人工智能 智能体互联》系列7项国家标准，全面覆盖总体架构、身份码、身份管理、智能体描述、发现、交互、工具调用等环节，搭建”身份标识—能力描述—供需发现—协同交互—工具调用”闭环标准体系。<br>来源：<a class="link"   target="_blank" rel="noopener" href="http://politics.people.com.cn/n1/2026/0626/c1001-40728770.html" >人民网<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><strong>小米首款NAS智能存储发布：7月1日众筹2299元起</strong><br>小米正式发布首款家庭私有云NAS产品”Xiaomi智能存储”，采用双盘位设计，提供4TB&#x2F;8TB&#x2F;16TB三种规格，支持2.5G网口和影音NAS定位，7月1日众筹开售，到手价2299元起。<br>来源：<a class="link"   target="_blank" rel="noopener" href="https://www.ithome.com/0/967/760.htm" >IT之家<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<hr>
+<h2 id="四、IT职场"><a href="#四、IT职场" class="headerlink" title="四、IT职场"></a>四、IT职场</h2><p><strong>阿里星2027届应届生招募启动，面向全球吸引AI人才</strong><br>阿里星2027届应届生招募正式启动。6月29日”阿里星·热爱之旅”线下活动在杭州全球总部举办，40余所高校160名学子参加，与淘天、阿里云、千问等10余个业务开展技术交流。活动已在北京、新加坡、丹佛等城市开展。<br>来源：<a class="link"   target="_blank" rel="noopener" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_6366a423eb913452" >腾讯新闻<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<hr>
+<h2 id="五、金融领域"><a href="#五、金融领域" class="headerlink" title="五、金融领域"></a>五、金融领域</h2><p><strong>物理AI第一股Momenta启动港股招股：定价295.6港元</strong><br>物理AI公司Momenta 6月29日披露全球发售文件，正式启动港股IPO招股，股票代码”6880”，发行价295.60港元&#x2F;股，不设价格区间，计划全球发售约1994万股，预计募资约58.9亿港元。奔驰、比亚迪等14家超豪华基石投资者参与。<br>来源：<a class="link"   target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1869296284052145095" >证券时报<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><strong>自变量机器人2月完成4轮融资，估值破200亿元</strong><br>具身智能企业自变量机器人连续完成B&#x2F;B+&#x2F;B++&#x2F;C四轮融资并全部交割，投后估值突破200亿元，成为大湾区首家估值超200亿的具身智能企业。投资方包括中国移动、国家人工智能产业投资基金、红杉中国、美团、阿里、字节跳动等30多家机构。<br>来源：<a class="link"   target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1869296284052145095" >证券时报<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<hr>
+<h2 id="今日速览"><a href="#今日速览" class="headerlink" title="今日速览"></a>今日速览</h2><table>
+<thead>
+<tr>
+<th>领域</th>
+<th>重点事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>算力</td>
+<td>谷歌因算力紧张限制Meta使用Gemini</td>
+</tr>
+<tr>
+<td>AI投资</td>
+<td>韩国550万亿韩元建AI数据中心，三星SK扩产</td>
+</tr>
+<tr>
+<td>大模型</td>
+<td>字节五大模型亮相，豆包日均tokens达180万亿</td>
+</tr>
+<tr>
+<td>AI模型</td>
+<td>Grok 4.5内测，马斯克每月发新模型</td>
+</tr>
+<tr>
+<td>芯片</td>
+<td>高通传百亿收购Tenstorrent</td>
+</tr>
+<tr>
+<td>标准</td>
+<td>我国发布首个智能体互联系列国标</td>
+</tr>
+<tr>
+<td>硬件</td>
+<td>小米首款NAS智能存储发布</td>
+</tr>
+<tr>
+<td>上市</td>
+<td>Momenta以”物理AI第一股”启动港股招股</td>
+</tr>
+<tr>
+<td>融资</td>
+<td>自变量机器人4轮融资估值破200亿</td>
+</tr>
+<tr>
+<td>职场</td>
+<td>阿里星招募全球AI人才</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h2><ol>
+<li><a class="link"   target="_blank" rel="noopener" href="https://finance.sina.com.cn/jjxw/2026-06-29/doc-inifacku5442671.shtml" >东方财富网 - 韩国550万亿韩元AI投资<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.ithome.com/0/967/330.htm" >IT之家 - 字节五大模型亮相<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://news.softunis.com/62744.html" >21世纪经济报道 - Grok 4.5内测<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://news.softunis.com/62744.html" >环球网 - 谷歌限制Meta使用Gemini<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1869296284052145095" >证券时报 - Momenta启动港股招股<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="http://politics.people.com.cn/n1/2026/0626/c1001-40728770.html" >人民网 - 智能体互联国标发布<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.ithome.com/0/967/760.htm" >IT之家 - 小米首款NAS发布<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_6366a423eb913452" >腾讯新闻 - 阿里星招募<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+</ol>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型</li>
+        <li><strong>作者:</strong> xiaobotester</li>
+        <li><strong>创建于
+                :</strong> 2026-06-30 08:00:00</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2026-06-30 10:00:45
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://xiaobotester.github.io/2026/06/30/2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Google%E7%AE%97%E5%8A%9B/">#Google算力</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E9%9F%A9%E5%9B%BDAI%E6%8A%95%E8%B5%84/">#韩国AI投资</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%AD%97%E8%8A%82%E5%A4%A7%E6%A8%A1%E5%9E%8B/">#字节大模型</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Momenta-IPO/">#Momenta IPO</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%B0%8F%E7%B1%B3NAS/">#小米NAS</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2026/06/29/2026%E5%B9%B46%E6%9C%8829%E6%97%A5-%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5-GPT-5.6%E4%B8%89%E6%A1%A3%E9%BD%90%E5%8F%91IBM0.7nm%E8%8A%AF%E7%89%87M-Robots%E5%BC%80%E6%BA%90/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">2026年6月29日-行业日报-GPT-5.6三档齐发IBM0.7nm芯片M-Robots开源</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2026%E5%B9%B46%E6%9C%8830%E6%97%A5-%E8%A1%8C%E4%B8%9A%E6%97%A5%E6%8A%A5-Google%E7%AE%97%E5%8A%9B%E7%93%B6%E9%A2%88%E9%9F%A9%E5%9B%BDAI%E6%8A%95%E8%B5%84%E5%AD%97%E8%8A%82%E4%BA%94%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="nav-text">2026年6月30日-行业日报-Google算力瓶颈韩国AI投资字节五大模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E4%B8%8E%E8%B4%A8%E9%87%8F%E4%BF%9D%E9%9A%9C"><span class="nav-text">一、软件测试与质量保障</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81AI%E4%B8%8E%E6%A8%A1%E5%9E%8B%E5%8E%82%E5%95%86"><span class="nav-text">二、AI与模型厂商</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%A7%91%E6%8A%80%E8%A1%8C%E4%B8%9A"><span class="nav-text">三、科技行业</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81IT%E8%81%8C%E5%9C%BA"><span class="nav-text">四、IT职场</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%87%91%E8%9E%8D%E9%A2%86%E5%9F%9F"><span class="nav-text">五、金融领域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8A%E6%97%A5%E9%80%9F%E8%A7%88"><span class="nav-text">今日速览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%9D%A5%E6%BA%90"><span class="nav-text">参考来源</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2026</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">xiaobotester</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 48 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+            
+                
+        
+                
+        
+                
+
+                    
+                        <script data-swup-reload-script>document.addEventListener("DOMContentLoaded",function(){var siteUrl="https://xiaobotester.github.io";function fullUrl(src){if(!src)return"";if(src.startsWith("http"))return src;if(src.startsWith("//"))return"https:"+src;return siteUrl+(src.startsWith("/")?src:"/"+src)}function htmlToMd(el){var md="";el.childNodes.forEach(function(node){if(node.nodeType===3){md+=node.textContent;return}if(node.nodeType!==1)return;var tag=node.tagName.toLowerCase();if(tag==="h1")md+="\n# "+node.textContent.trim()+"\n\n";else if(tag==="h2")md+="\n## "+node.textContent.trim()+"\n\n";else if(tag==="h3")md+="\n### "+node.textContent.trim()+"\n\n";else if(tag==="h4")md+="\n#### "+node.textContent.trim()+"\n\n";else if(tag==="h5")md+="\n##### "+node.textContent.trim()+"\n\n";else if(tag==="h6")md+="\n###### "+node.textContent.trim()+"\n\n";else if(tag==="p")md+=inlineToMd(node)+"\n\n";else if(tag==="blockquote"){var lines=htmlToMd(node).trim().split("\n");md+="\n"+lines.map(function(l){return"> "+l}).join("\n")+"\n\n"}else if(tag==="pre"){var code=node.querySelector("code");var text=code?code.textContent:node.textContent;md+="\n```\n"+text.trim()+"\n```\n\n"}else if(tag==="ul"||tag==="ol"){var items=node.querySelectorAll(":scope > li");items.forEach(function(li,i){var prefix=tag==="ol"?(i+1)+". ":"- ";md+=prefix+inlineToMd(li).trim()+"\n"});md+="\n"}else if(tag==="table"){var rows=node.querySelectorAll("tr");rows.forEach(function(row,ri){var cells=row.querySelectorAll("th,td");var line="| "+Array.from(cells).map(function(c){return c.textContent.trim()}).join(" | ")+" |";md+=line+"\n";if(ri===0){md+="| "+Array.from(cells).map(function(){return"---"}).join(" | ")+" |\n"}});md+="\n"}else if(tag==="hr")md+="\n---\n\n";else if(tag==="br")md+="\n";else if(tag==="img"){var alt=node.getAttribute("alt")||"";var src=fullUrl(node.getAttribute("data-src")||node.getAttribute("src")||"");md+="!["+alt+"]("+src+")\n\n"}else md+=htmlToMd(node)});return md}function inlineToMd(el){var result="";el.childNodes.forEach(function(node){if(node.nodeType===3){result+=node.textContent;return}if(node.nodeType!==1)return;var tag=node.tagName.toLowerCase();if(tag==="strong"||tag==="b")result+="**"+node.textContent+"**";else if(tag==="em"||tag==="i")result+="*"+node.textContent+"*";else if(tag==="code")result+="`"+node.textContent+"`";else if(tag==="a"){var href=node.getAttribute("href")||"";if(!href.startsWith("http"))href=fullUrl(href);result+="["+node.textContent+"]("+href+")"}else if(tag==="del"||tag==="s")result+="~~"+node.textContent+"~~";else if(tag==="img"){var alt=node.getAttribute("alt")||"";var src=fullUrl(node.getAttribute("data-src")||node.getAttribute("src")||"");result+="!["+alt+"]("+src+")"}else if(tag==="br")result+="\n";else result+=node.textContent});return result}function copyRichText(articleContent,toast){var clone=articleContent.cloneNode(true);clone.style.cssText="position:fixed;left:-9999px;top:0;background:#fff;color:#333;padding:20px;font-size:16px;line-height:1.8";clone.querySelectorAll("img").forEach(function(img){var realSrc=img.getAttribute("data-src")||img.getAttribute("src")||"";img.setAttribute("src",fullUrl(realSrc));img.removeAttribute("data-src");img.removeAttribute("loading");img.removeAttribute("class");img.style.cssText="max-width:100%;height:auto;display:block;margin:16px auto"});clone.querySelectorAll("*").forEach(function(el){var tag=el.tagName.toLowerCase();if(tag==="img")return;if(tag==="pre"){el.style.cssText="background:#f6f8fa;color:#24292e;border:1px solid #e1e4e8;border-radius:6px;padding:16px;font-size:14px;line-height:1.6;overflow:auto;margin:16px 0"}else if(tag==="code"&&!el.closest("pre")){el.style.cssText="background:#f6f8fa;color:#d63384;padding:2px 6px;border-radius:3px;font-size:14px"}else if(tag==="code"&&el.closest("pre")){el.style.cssText="background:transparent;color:#24292e;font-size:14px"}else if(tag==="blockquote"){el.style.cssText="background:#f0f7ff;border-left:4px solid #2563EB;padding:12px 16px;color:#555;margin:16px 0"}else if(tag==="h1"){el.style.cssText="color:#1a1a1a;font-size:24px;font-weight:bold;margin:24px 0 12px"}else if(tag==="h2"){el.style.cssText="color:#1a1a1a;font-size:20px;font-weight:bold;margin:20px 0 10px"}else if(tag==="h3"){el.style.cssText="color:#1a1a1a;font-size:18px;font-weight:bold;margin:16px 0 8px"}else if(tag.match(/^h[4-6]$/)){el.style.cssText="color:#1a1a1a;font-size:16px;font-weight:bold;margin:12px 0 6px"}else if(tag==="a"){el.style.color="#2563EB"}else if(tag==="p"){el.style.cssText="color:#333;margin:8px 0;line-height:1.8"}else if(tag==="li"){el.style.cssText="color:#333;line-height:1.8"}else if(tag==="ul"||tag==="ol"){el.style.cssText="color:#333;padding-left:20px;margin:8px 0"}else if(tag==="strong"||tag==="b"){el.style.color="#1a1a1a"}else if(tag==="table"){el.style.cssText="border-collapse:collapse;width:100%;margin:16px 0;border:1px solid #e1e4e8;table-layout:fixed;word-break:break-all"}else if(tag==="thead"){el.style.cssText="background:#f6f8fa"}else if(tag==="tbody"){el.style.cssText="background:#fff"}else if(tag==="tr"){el.style.cssText="border-bottom:1px solid #e1e4e8"}else if(tag==="th"){el.style.cssText="background:#f6f8fa;color:#1a1a1a;border:1px solid #e1e4e8;padding:10px 14px;font-weight:bold;font-size:14px;text-align:left;word-break:break-all"}else if(tag==="td"){el.style.cssText="color:#333;border:1px solid #e1e4e8;padding:10px 14px;font-size:14px;text-align:left;word-break:break-all"}else{el.style.color="#333"}});document.body.appendChild(clone);var range=document.createRange();range.selectNodeContents(clone);var selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);try{document.execCommand("copy");toast.textContent="已复制富文本！可粘贴到公众号";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)}catch(e){toast.textContent="复制失败";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)}selection.removeAllRanges();document.body.removeChild(clone)}function initCopyBtns(){var articleContent=document.querySelector(".article-content");if(!articleContent)return;document.querySelectorAll(".copy-article-btn,.copy-md-btn").forEach(function(b){b.remove()});var toast=document.querySelector(".copy-toast");if(!toast){toast=document.createElement("div");toast.className="copy-toast";document.body.appendChild(toast)}var btnRich=document.createElement("button");btnRich.className="copy-article-btn";btnRich.innerHTML="<i class=\"fa-regular fa-copy\"></i> 复制全文";btnRich.addEventListener("click",function(){copyRichText(articleContent,toast)});document.body.appendChild(btnRich);var btnMd=document.createElement("button");btnMd.className="copy-md-btn";btnMd.innerHTML="<i class=\"fa-regular fa-file-code\"></i> 复制MD";btnMd.addEventListener("click",function(){var mdText=htmlToMd(articleContent).replace(/\n{3,}/g,"\n\n").trim();navigator.clipboard.writeText(mdText).then(function(){toast.textContent="已复制Markdown！";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)}).catch(function(){var ta=document.createElement("textarea");ta.value=mdText;ta.style.cssText="position:fixed;left:-9999px";document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);toast.textContent="已复制Markdown！";toast.style.opacity="1";setTimeout(function(){toast.style.opacity="0"},2000)})});document.body.appendChild(btnMd)}initCopyBtns();if(document.querySelector("[data-swup]")){document.addEventListener("swup:contentReplaced",initCopyBtns)}});</script>
+                    
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/Swup.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupSlideTheme.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupScriptsPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupProgressPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupScrollPlugin.min.js" ></script><script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/SwupPreloadPlugin.min.js" ></script>
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	<script type="module" src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/main.js" ></script>
+
+
+    <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/odometer.min.js" ></script>
+    <link rel="stylesheet" href="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+  <script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/Typed.min.js" ></script>
+
+
+
+
+
+
+
+
+<script  src="https://registry.npmmirror.com/hexo-theme-redefine/2.9.0/files/source/js/build/libs/moment-with-locales.min.js" data-swup-reload-script></script>
+
+
+	
+</body>
+
+</html>
